@@ -1,0 +1,138 @@
+2025-08-24 19:08:46 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 19:08:46 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 19:08:46 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 19:08:46 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 19:08:46 [info] : Starting AI Trading Algorithm
+2025-08-24 19:08:46 [info] : Configuration validated
+2025-08-24 19:08:46 [info] : Starting trading engine
+2025-08-24 19:08:46 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 19:08:47 [error] : Failed to start trading engine {"error":{"name":"AuthenticationError"}}
+2025-08-24 19:16:46 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 19:16:46 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 19:16:46 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 19:16:46 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 19:16:46 [info] : Starting AI Trading Algorithm
+2025-08-24 19:16:46 [info] : Configuration validated
+2025-08-24 19:16:46 [info] : Starting trading engine
+2025-08-24 19:16:46 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 19:16:47 [info] : Starting sentiment analyzer {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:32:23 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 20:32:23 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 20:32:23 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 20:32:23 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 20:32:23 [info] : Starting AI Trading Algorithm
+2025-08-24 20:32:23 [info] : Configuration validated
+2025-08-24 20:32:23 [info] : Starting trading engine
+2025-08-24 20:32:23 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:32:24 [info] : Starting sentiment analyzer {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:32:24 [info] : Running market analysis
+2025-08-24 20:32:24 [info] : Trading engine started successfully
+2025-08-24 20:32:24 [info] : AI Trading Algorithm is running
+2025-08-24 20:32:24 [info] : Server running on port 3000
+2025-08-24 20:32:24 [info] : WebSocket available on ws://localhost:3000
+2025-08-24 20:32:25 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy combined generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy combined generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:32:25 [info] : Strategy combined generated 0 signals
+2025-08-24 20:32:26 [error] : Error in AI decision making {"error":"404 {\"type\":\"error\",\"error\":{\"type\":\"not_found_error\",\"message\":\"model: claude-3-sonnet-20240229\"},\"request_id\":\"req_011CSSjiSHubN7TPrg4xzv6Q\"}"}
+2025-08-24 20:32:37 [info] : Received SIGINT, shutting down gracefully
+2025-08-24 20:42:09 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 20:42:09 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 20:42:09 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 20:42:09 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 20:42:09 [info] : Starting AI Trading Algorithm
+2025-08-24 20:42:09 [info] : Configuration validated
+2025-08-24 20:42:09 [info] : Starting trading engine
+2025-08-24 20:42:09 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:42:10 [info] : Starting sentiment analyzer {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:42:10 [info] : Running market analysis
+2025-08-24 20:42:10 [info] : Trading engine started successfully
+2025-08-24 20:42:10 [info] : AI Trading Algorithm is running
+2025-08-24 20:42:10 [info] : Server running on port 3000
+2025-08-24 20:42:10 [info] : WebSocket available on ws://localhost:3000
+2025-08-24 20:42:11 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy combined generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy meanReversion generated 1 signals
+2025-08-24 20:42:11 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy combined generated 1 signals
+2025-08-24 20:42:11 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:42:11 [info] : Strategy combined generated 0 signals
+2025-08-24 20:42:22 [error] : Error parsing AI response {"error":{},"response":"{\n  \"signals\": [\n    {\n      \"symbol\": \"BTC/USDT\",\n      \"action\": \"HOLD\",\n      \"confidence\": 0.65,\n      \"reason\": \"Price consolidating within BB bands, neutral RSI, positive MACD crossover forming\",\n      \"entryPrice\": null,\n      \"targetPrice\": 115200,\n      \"stopLoss\": null,\n      \"positionSize\": 0\n    }\n  ],\n  \"reasoning\": \"The market is showing mixed signals with slightly bullish bias. While the price is above SMA20 indicating short-term strength, it's trading below SMA50 suggesting some overhead resistance. The RSI at 57.02 shows moderate bullish momentum without being overbought. MACD is showing potential bullish crossover (-81.07 vs -96.61). Sentiment analysis is mildly positive (0.16), but not strong enough to warrant aggressive positioning. Volume is healthy but price action is relatively tight within Bollinger Bands, suggesting consolidation.\",\n  \"marketCondition\": \"neutral\",\n  \"confidence\": 0.65,\n  \"suggestedActions\": [\n    {\n      \"symbol\": \"BTC/USDT\",\n      \"action\": \"Wait for breakout above BB Upper Band at 114918\",\n      \"rationale\": \"Potential breakout setup forming with positive MACD divergence\"\n    },\n    {\n      \"symbol\": \"BTC/USDT\",\n      \"action\": \"Prepare buy order if price breaks above 115000\",\n      \"rationale\": \"Key psychological level with momentum confirmation\"\n    }\n  ],\n  \"riskAssessment\": {\n    \"level\": \"medium\",\n    \"factors\": [\n      \"Price near all-time highs\",\n      \"Moderate volatility (ATR: 183.52)\",\n      \"Mixed sentiment indicators\",\n      \"Consolidation pattern could break either way\",\n      \"Major psychological level nearby (115000)\"\n    ]\n  }\n}\n\nGiven the current market conditions, I recommend maintaining a cautious stance. While there are some bullish indicators, the risk/reward ratio isn't compelling enough for immediate entry. The price is consolidating near significant levels, and it would be prudent to wait for a clear breakout confirmation before establishing positions. The relatively tight Bollinger Bands suggest a potential volatility expansion soon, which could provide better entry opportunities."}
+2025-08-24 20:42:32 [info] : Received SIGINT, shutting down gracefully
+2025-08-24 20:44:11 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 20:44:11 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 20:44:11 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 20:44:11 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 20:44:11 [info] : Starting AI Trading Algorithm
+2025-08-24 20:44:11 [info] : Configuration validated
+2025-08-24 20:44:11 [info] : Starting trading engine
+2025-08-24 20:44:11 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:44:13 [info] : Starting sentiment analyzer {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:44:13 [info] : Running market analysis
+2025-08-24 20:44:13 [info] : Trading engine started successfully
+2025-08-24 20:44:13 [info] : AI Trading Algorithm is running
+2025-08-24 20:44:13 [info] : Server running on port 3000
+2025-08-24 20:44:13 [info] : WebSocket available on ws://localhost:3000
+2025-08-24 20:44:15 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy combined generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy meanReversion generated 1 signals
+2025-08-24 20:44:15 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy combined generated 1 signals
+2025-08-24 20:44:15 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:15 [info] : Strategy combined generated 0 signals
+2025-08-24 20:44:24 [info] : Executing paper trade {"signal":{"symbol":"BTC/USDT","action":"HOLD","confidence":0.65,"reason":"Price consolidating within BB bands, neutral RSI, slightly bearish MACD crossover","timestamp":"2025-08-24T15:14:24.710Z","entryPrice":null,"targetPrice":null,"stopLoss":null,"positionSize":0.1}}
+2025-08-24 20:44:33 [info] : Strategy registered {"name":"momentum","type":"momentum"}
+2025-08-24 20:44:33 [info] : Strategy registered {"name":"meanReversion","type":"meanReversion"}
+2025-08-24 20:44:33 [info] : Strategy registered {"name":"sentiment","type":"sentiment"}
+2025-08-24 20:44:33 [info] : Strategy registered {"name":"combined","type":"combined"}
+2025-08-24 20:44:33 [info] : Starting AI Trading Algorithm
+2025-08-24 20:44:33 [info] : Configuration validated
+2025-08-24 20:44:33 [info] : Starting trading engine
+2025-08-24 20:44:33 [info] : Starting market data collector {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:44:34 [info] : Starting sentiment analyzer {"symbols":["BTC/USDT","ETH/USDT","SOL/USDT"]}
+2025-08-24 20:44:34 [info] : Running market analysis
+2025-08-24 20:44:34 [info] : Trading engine started successfully
+2025-08-24 20:44:34 [info] : AI Trading Algorithm is running
+2025-08-24 20:44:34 [info] : Server running on port 3000
+2025-08-24 20:44:34 [info] : WebSocket available on ws://localhost:3000
+2025-08-24 20:44:36 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy combined generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy meanReversion generated 1 signals
+2025-08-24 20:44:36 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy combined generated 1 signals
+2025-08-24 20:44:36 [info] : Strategy momentum generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy meanReversion generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy sentiment generated 0 signals
+2025-08-24 20:44:36 [info] : Strategy combined generated 0 signals
+2025-08-24 20:44:45 [info] : Executing paper trade {"signal":{"symbol":"BTC/USDT","action":"HOLD","confidence":0.65,"reason":"Price consolidating within BB bands, neutral RSI, slightly positive MACD crossover forming","timestamp":"2025-08-24T15:14:45.856Z","entryPrice":null,"targetPrice":null,"stopLoss":null,"positionSize":0.1}}
+2025-08-24 20:45:17 [info] : Received SIGTERM, shutting down gracefully
+2025-08-24 23:02:53 [info] : Initializing DeFi Executor for Shape Sepolia...
+2025-08-24 23:02:53 [info] : DeFi Executor initialized for Shape Sepolia {"address":"0x6B9ad963c764a06A7ef8ff96D38D0cB86575eC00","router":"0x92ED5E27Bea8bAbF79Cbc62e843062F6406f7644"}
+2025-08-24 23:02:53 [info] : Fetching account status...
+2025-08-24 23:02:55 [error] : Error testing DeFi Executor {"error":{"code":"SERVER_ERROR","request":{},"response":{},"info":{"requestUrl":"https://rpc-shape-sepolia-vg7moj8ogd.t.conduit.xyz","responseBody":null,"responseStatus":"502 Bad Gateway"},"shortMessage":"server response 502 Bad Gateway"}}
+2025-08-24 23:05:22 [info] : Initializing DeFi Executor for Shape Sepolia...
+2025-08-24 23:05:22 [info] : Connecting to Shape Sepolia {"rpcUrl":"https://sepolia.shape.network"}
+2025-08-24 23:05:22 [info] : DeFi Executor initialized for Shape Sepolia {"address":"0x6B9ad963c764a06A7ef8ff96D38D0cB86575eC00","router":"0x92ED5E27Bea8bAbF79Cbc62e843062F6406f7644"}
+2025-08-24 23:05:22 [info] : Fetching account status...
+2025-08-24 23:05:26 [info] : DeFi Executor test completed successfully
