@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .asset-item { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        canvas { border: 1px solid #ddd; }
+        button { margin: 5px; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Placeholder Asset Generator</h1>
+    <p>Click "Generate All" to create placeholder assets for the game.</p>
+    
+    <button onclick="generateAllAssets()">Generate All Assets</button>
+    <button onclick="downloadAllAssets()">Download All as ZIP</button>
+    
+    <div id="assetGrid" class="asset-grid"></div>
+
+    <script>
+        const assets = [
+            // Kaiju assets
+            { name: 'kaiju-1.png', path: 'kaiju', color: '#4a9eff', text: 'K1' },
+            { name: 'kaiju-2.png', path: 'kaiju', color: '#ff6b4a', text: 'K2' },
+            { name: 'kaiju-3.png', path: 'kaiju', color: '#4aff6b', text: 'K3' },
+            
+            // Effect assets
+            { name: 'star.png', path: 'effects', color: '#fff44f', text: '★' },
+            { name: 'smoke.png', path: 'effects', color: '#888888', text: '☁' },
+            { name: 'fire.png', path: 'effects', color: '#ff4444', text: '🔥' },
+            { name: 'sparkle.png', path: 'effects', color: '#ffff44', text: '✨' },
+            
+            // Biome assets
+            { name: 'fire.png', path: 'biomes', color: '#ff4444', text: 'F' },
+            { name: 'water.png', path: 'biomes', color: '#4488ff', text: 'W' },
+            { name: 'earth.png', path: 'biomes', color: '#88ff44', text: 'E' },
+            { name: 'air.png', path: 'biomes', color: '#ffff88', text: 'A' },
+            
+            // Shadow assets
+            { name: 'follower.png', path: 'shadows', color: '#800080', text: 'F' },
+            { name: 'user.png', path: 'shadows', color: '#8000ff', text: 'U' },
+            
+            // Zone assets
+            { name: 'chat.jpg', path: 'zones', color: '#44ff88', text: 'C' },
+            { name: 'trading.jpg', path: 'zones', color: '#ff8844', text: 'T' },
+            { name: 'statistics.jpg', path: 'zones', color: '#8844ff', text: 'S' },
+            
+            // Weather assets
+            { name: 'rain.png', path: 'weather', color: '#4488ff', text: '🌧' },
+            { name: 'snow.png', path: 'weather', color: '#ffffff', text: '❄' },
+            { name: 'fog.png', path: 'weather', color: '#cccccc', text: '🌫' },
+            
+            // Ambient assets
+            { name: 'fire-particle.png', path: 'ambient', color: '#ff6644', text: '•' },
+            { name: 'water-droplet.png', path: 'ambient', color: '#4466ff', text: '💧' },
+            { name: 'earth-particle.png', path: 'ambient', color: '#66ff44', text: '•' },
+            { name: 'air-wisp.png', path: 'ambient', color: '#ffff66', text: '~' },
+        ];
+
+        function createAssetCanvas(asset) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = asset.color;
+            ctx.fillRect(0, 0, 64, 64);
+            
+            // Border
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(1, 1, 62, 62);
+            
+            // Text
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(asset.text, 32, 32);
+            
+            return canvas;
+        }
+
+        function generateAllAssets() {
+            const grid = document.getElementById('assetGrid');
+            grid.innerHTML = '';
+            
+            assets.forEach(asset => {
+                const div = document.createElement('div');
+                div.className = 'asset-item';
+                
+                const canvas = createAssetCanvas(asset);
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = 'Download';
+                downloadBtn.onclick = () => downloadAsset(canvas, asset.name);
+                
+                div.innerHTML = `
+                    <h4>${asset.path}/${asset.name}</h4>
+                `;
+                div.appendChild(canvas);
+                div.appendChild(downloadBtn);
+                
+                grid.appendChild(div);
+            });
+        }
+
+        function downloadAsset(canvas, filename) {
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        function downloadAllAssets() {
+            alert('Individual downloads only for now. Click "Download" on each asset you need.');
+        }
+    </script>
+</body>
+</html>

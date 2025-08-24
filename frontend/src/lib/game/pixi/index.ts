@@ -1,0 +1,17 @@
+export { PixiApp } from '@/components/game/pixi/PixiApp';
+export { AssetLoader, type AssetManifest } from './AssetLoader';
+export { PerformanceMonitor } from './PerformanceMonitor';
+export { KaijuSprite, type KaijuAnimationState, type KaijuSpriteOptions } from './KaijuSprite';
+export { AnimationManager, type AnimationData, type SpriteSheetData } from './AnimationManager';
+export { CollisionSystem, type Collidable, type CollisionLayer } from './CollisionSystem';
+export { ParticleSystem, ParticleEmitter, Particle, ParticleEffects, type ParticleConfig } from './ParticleSystem';
+export { AudioManager, type AudioConfig, type SoundOptions } from './AudioManager';
+export { Camera, type CameraOptions } from './Camera';
+export { TouchControls, type TouchInput, type GestureEvent } from './TouchControls';
+export { GameManager } from './GameManager';
+export { TerritoryManager, type BiomeType, type InteractiveZoneConfig } from './TerritoryManager';
+export { TerrainRenderer } from './TerrainRenderer';
+export { ShadowSprite, type ShadowConfig } from './ShadowSprite';
+export { InteractiveZone, type InteractiveZoneConfig as InteractiveZoneComponentConfig } from './InteractiveZone';
+export { EnvironmentSystem, type EnvironmentConfig } from './EnvironmentSystem';
+export { MinimapSystem, type MinimapConfig } from './MinimapSystem';

@@ -1,0 +1,426 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-orbitron);
+  --font-pixel: var(--font-pixel);
+  --font-mono: var(--font-space-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Kaiju Theme Colors */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-dark: var(--dark);
+  --color-territory-fire: var(--territory-fire);
+  --color-territory-water: var(--territory-water);
+  --color-territory-earth: var(--territory-earth);
+  --color-territory-air: var(--territory-air);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.678 0.182 265.754); /* Electric blue #6366f1 */
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.678 0.182 292.365); /* Purple #8b5cf6 */
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.628 0.259 25.545); /* Red #ef4444 */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Kaiju Theme Colors */
+  --success: oklch(0.678 0.198 142.495); /* Green #10b981 */
+  --warning: oklch(0.795 0.184 75.834); /* Orange #f59e0b */
+  --dark: oklch(0.281 0.085 285.854); /* Deep navy #1e1b4b */
+  --territory-fire: oklch(0.628 0.259 25.545); /* Fire red */
+  --territory-water: oklch(0.678 0.182 265.754); /* Water blue */
+  --territory-earth: oklch(0.678 0.198 142.495); /* Earth green */
+  --territory-air: oklch(0.678 0.182 292.365); /* Air purple */
+}
+
+.dark {
+  --background: oklch(0.281 0.085 285.854); /* Deep navy #1e1b4b */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.678 0.182 265.754); /* Electric blue #6366f1 */
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.678 0.182 292.365); /* Purple #8b5cf6 */
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.628 0.259 25.545); /* Red #ef4444 */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  
+  /* Kaiju Theme Colors - Dark Mode */
+  --success: oklch(0.678 0.198 142.495); /* Green #10b981 */
+  --warning: oklch(0.795 0.184 75.834); /* Orange #f59e0b */
+  --dark: oklch(0.281 0.085 285.854); /* Deep navy #1e1b4b */
+  --territory-fire: oklch(0.628 0.259 25.545); /* Fire red */
+  --territory-water: oklch(0.678 0.182 265.754); /* Water blue */
+  --territory-earth: oklch(0.678 0.198 142.495); /* Earth green */
+  --territory-air: oklch(0.678 0.182 292.365); /* Air purple */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-orbitron);
+  }
+  .font-pixel {
+    font-family: var(--font-pixel);
+  }
+  .font-mono {
+    font-family: var(--font-space-mono);
+  }
+  .font-sans {
+    font-family: var(--font-inter);
+  }
+  
+  /* 3D Transform Utilities */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Responsive Typography */
+  .text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  .subheading-responsive {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+  
+  /* Responsive Spacing */
+  .spacing-responsive {
+    @apply p-4 sm:p-6 md:p-8 lg:p-10;
+  }
+  
+  /* Touch Target Sizes */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] md:min-h-[32px] md:min-w-[32px];
+  }
+  
+  /* Hide/Show Based on Device */
+  .mobile-only {
+    @apply block sm:hidden;
+  }
+  
+  .tablet-only {
+    @apply hidden sm:block lg:hidden;
+  }
+  
+  .desktop-only {
+    @apply hidden lg:block;
+  }
+  
+  /* Responsive Grid Utilities */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  
+  /* Safe Area Insets for Mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Viewport Height Fix for Mobile */
+  .h-viewport {
+    height: 100vh;
+    height: 100dvh;
+  }
+  
+  .min-h-viewport {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  
+  /* Swipe Gestures */
+  .swipeable {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .swipeable-x {
+    touch-action: pan-x;
+  }
+  
+  /* Pull to Refresh */
+  .pull-to-refresh {
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Animation Delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  /* Ancient Civilization Button Styles */
+  .btn-ancient {
+    position: relative;
+    background: linear-gradient(145deg, 
+      rgba(139, 117, 94, 0.9) 0%, 
+      rgba(101, 85, 67, 0.9) 35%, 
+      rgba(78, 65, 52, 0.9) 100%);
+    border: none;
+    border-radius: 0.5rem;
+    color: #f4f1e8;
+    font-family: var(--font-pixel);
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .btn-ancient:hover {
+    background: linear-gradient(145deg, 
+      rgba(159, 134, 107, 0.9) 0%, 
+      rgba(121, 105, 87, 0.9) 35%, 
+      rgba(98, 85, 72, 0.9) 100%);
+    transform: translateY(-1px);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      0 6px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .btn-ancient:active {
+    transform: translateY(1px);
+    box-shadow: 
+      inset 0 1px 0 rgba(0, 0, 0, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-ancient:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 20%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  
+  /* Ancient button variants */
+  .btn-ancient-fire {
+    background: linear-gradient(145deg, 
+      rgba(185, 92, 72, 0.9) 0%, 
+      rgba(139, 69, 54, 0.9) 35%, 
+      rgba(107, 53, 41, 0.9) 100%);
+    color: #ffd6cc;
+  }
+  
+  .btn-ancient-fire:hover {
+    background: linear-gradient(145deg, 
+      rgba(205, 112, 92, 0.9) 0%, 
+      rgba(159, 89, 74, 0.9) 35%, 
+      rgba(127, 73, 61, 0.9) 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(239, 68, 68, 0.3);
+  }
+  
+  .btn-ancient-shadow {
+    background: linear-gradient(145deg, 
+      rgba(88, 77, 115, 0.9) 0%, 
+      rgba(66, 58, 87, 0.9) 35%, 
+      rgba(51, 45, 67, 0.9) 100%);
+    color: #e6d6ff;
+  }
+  
+  .btn-ancient-shadow:hover {
+    background: linear-gradient(145deg, 
+      rgba(108, 97, 135, 0.9) 0%, 
+      rgba(86, 78, 107, 0.9) 35%, 
+      rgba(71, 65, 87, 0.9) 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(147, 51, 234, 0.3);
+  }
+  
+  .btn-ancient-success {
+    background: linear-gradient(145deg, 
+      rgba(72, 142, 106, 0.9) 0%, 
+      rgba(54, 107, 80, 0.9) 35%, 
+      rgba(41, 82, 61, 0.9) 100%);
+    color: #d6ffd6;
+  }
+  
+  .btn-ancient-success:hover {
+    background: linear-gradient(145deg, 
+      rgba(92, 162, 126, 0.9) 0%, 
+      rgba(74, 127, 100, 0.9) 35%, 
+      rgba(61, 102, 81, 0.9) 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(16, 185, 129, 0.3);
+  }
+  
+  /* Ancient input styles */
+  .input-ancient {
+    background: linear-gradient(145deg, 
+      rgba(39, 33, 27, 0.95) 0%, 
+      rgba(59, 53, 47, 0.95) 100%);
+    border: 2px solid rgba(139, 117, 94, 0.6);
+    border-radius: 0.5rem;
+    color: #f4f1e8;
+    font-family: var(--font-mono);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .input-ancient:focus {
+    border-color: rgba(185, 92, 72, 0.8);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 0 0 2px rgba(185, 92, 72, 0.2),
+      0 0 10px rgba(185, 92, 72, 0.3);
+  }
+  
+  .input-ancient::placeholder {
+    color: rgba(244, 241, 232, 0.5);
+  }
+}

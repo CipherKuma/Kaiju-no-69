@@ -1,0 +1,16 @@
+{
+  "hardhat": {
+    "chainId": 31337,
+    "KaijuCollectionFactory": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "testKaijuNFT": "0xa16E02E87b7454126E5E10d957A927A7F5B5d2be",
+    "testShadowNFT": "0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968"
+  },
+  "shapeSepolia": {
+    "chainId": 11011,
+    "KaijuCollectionFactory": ""
+  },
+  "shapeMainnet": {
+    "chainId": 360,
+    "KaijuCollectionFactory": "0x773d64029E11408B2D455e5931Bc5F1C2e828b6B"
+  }
+}
