@@ -1,0 +1,22 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "timestamp": "2025-08-24T19:54:29.245Z",
+  "contracts": {
+    "KaijuCollectionFactory": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "shadowMintFee": "0.01",
+      "platformFeePercentage": "250",
+      "platformFeeRecipient": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    }
+  },
+  "testCollection": {
+    "collectionId": "1",
+    "name": "Thunder Dragon",
+    "kaijuContract": "0xa16E02E87b7454126E5E10d957A927A7F5B5d2be",
+    "shadowContract": "0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968",
+    "creator": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "creationTx": "0x4ca76f87350669be19a8935e9f2363e7e98c01852e7f0769a712c7a0c573252a"
+  }
+}

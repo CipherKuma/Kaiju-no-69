@@ -1,0 +1,47 @@
+{
+  "name": "testing-trading",
+  "version": "1.0.0",
+  "description": "DeFi trading testing scripts for EVM testnets",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "swap": "node scripts/swap.js",
+    "liquidity": "node scripts/liquidity.js",
+    "lending": "node scripts/lending.js",
+    "setup": "node scripts/setup.js",
+    "deploy:kaiju": "npx hardhat run scripts/deploy-kaiju-nft.js",
+    "deploy:kaiju:testnet": "npx hardhat run scripts/deploy-kaiju-nft.js --network shapeSepolia",
+    "deploy:kaiju:mainnet": "npx hardhat run scripts/deploy-kaiju-nft.js --network shapeMainnet",
+    "deploy:mainnet:full": "npx hardhat run scripts/deploy-mainnet-with-ipfs.js --network shapeMainnet",
+    "deploy:corrected": "npx hardhat run scripts/deploy-corrected-mainnet.js --network shapeMainnet",
+    "pin:shadows": "npx hardhat run scripts/pin-shadow-stages.js --network shapeMainnet"
+  },
+  "dependencies": {
+    "@aave/protocol-v2": "^1.0.1",
+    "@runware/sdk-js": "^1.1.44",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "@uniswap/v3-core": "^1.0.1",
+    "@uniswap/v3-periphery": "^1.4.4",
+    "axios": "^1.11.0",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0",
+    "form-data": "^4.0.4",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@types/node": "^20.0.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "hardhat": "^2.22.0"
+  },
+  "keywords": [
+    "defi",
+    "testing",
+    "ethereum",
+    "uniswap",
+    "aave",
+    "trading"
+  ]
+}

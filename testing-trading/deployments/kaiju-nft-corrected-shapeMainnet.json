@@ -1,0 +1,68 @@
+{
+  "network": {
+    "name": "shapeMainnet",
+    "chainId": "360",
+    "rpcUrl": "https://mainnet.shape.network"
+  },
+  "deployment": {
+    "timestamp": "2025-08-24T20:35:32.349Z",
+    "deployer": "0x6B9ad963c764a06A7ef8ff96D38D0cB86575eC00",
+    "transactionHash": "0xba5cbd77529c97fdef3cfd09268256bf386615922fc74766d652a4abba54e3a2",
+    "gasUsed": "4234765"
+  },
+  "contracts": {
+    "KaijuCollectionFactory": {
+      "address": "0x773d64029E11408B2D455e5931Bc5F1C2e828b6B",
+      "shadowMintFee": "0.0001",
+      "platformFeePercentage": "2.5%"
+    }
+  },
+  "testCollection": {
+    "collectionId": 1,
+    "name": "Thunder Phoenix Emperor",
+    "kaijuContract": "0xCEB9Ec37c1498504B2Efd326D95C644E3b523B82",
+    "shadowContract": "0xBD6E32958C56728DEb06E3f7E883685eC38E0174",
+    "creator": "0x6B9ad963c764a06A7ef8ff96D38D0cB86575eC00",
+    "entryFee": "0.001 ETH",
+    "profitShare": "20%",
+    "testWallet": "0xb9119A436c9D59ffBc468648E9137C386ffFe01b"
+  },
+  "ipfsData": {
+    "kaiju": {
+      "imageUrl": "https://gateway.pinata.cloud/ipfs/bafkreidxbm6pa4mwg3ukeoe6hiz5emtkdbzflygp3eko5jd37m44bm6bgm",
+      "metadataUrl": "https://gateway.pinata.cloud/ipfs/bafkreiaokvsp3dth6cqu6ypb6bye5onzj4cmg7tcqrbui4j3pvftarnage"
+    },
+    "shadows": [
+      {
+        "stage": "Powerful",
+        "imageUrl": "https://gateway.pinata.cloud/ipfs/bafkreieyf5skkh3x7qvjxia437dzbiw7bejxj4uaymf3wbcicag7jq3ncu",
+        "metadataUrl": "https://gateway.pinata.cloud/ipfs/bafkreic2frp6rlwz7be4j7un35erehtuw53z2szagf4smtoryxmixybc5a"
+      },
+      {
+        "stage": "Weaker",
+        "imageUrl": "https://gateway.pinata.cloud/ipfs/bafkreiegxf5nkkkfb7xhgi5mybme5ly6knjyhic6edv46dxjv67jkkflte",
+        "metadataUrl": "https://gateway.pinata.cloud/ipfs/bafkreicddkelpireozhpl4jcmqqpah54udno222qz3jzrt4bh4vxsmjy5e"
+      },
+      {
+        "stage": "Weakest",
+        "imageUrl": "https://gateway.pinata.cloud/ipfs/bafkreibrhj2sc26oldmu36qasow6kkoe2vnpgi6r74oi4p7v5fcb2gtdmm",
+        "metadataUrl": "https://gateway.pinata.cloud/ipfs/bafkreig67p4qtloathzskm2nsyblipzbvicnkz7scfddoeavoscsq6ukru"
+      }
+    ]
+  },
+  "generatedImages": {
+    "kaiju": "https://im.runware.ai/image/ws/2/ii/a1333d80-1526-4e7e-8841-2cc93b980dd1.jpg",
+    "shadowStages": [
+      "https://im.runware.ai/image/ws/2/ii/2f2d65b4-310a-40df-9796-e5a5c7297ffb.jpg",
+      "https://im.runware.ai/image/ws/2/ii/11974f06-9b26-4e19-9350-a9dd51d51852.jpg",
+      "https://im.runware.ai/image/ws/2/ii/b085cd84-2850-41a7-8691-e582fc882416.jpg"
+    ]
+  },
+  "corrections": {
+    "shadowMintFee": "0.0001 ETH (very low for testing)",
+    "imageGeneration": "Single prompt generates main Kaiju + 3 shadow incarnations",
+    "shadowProgression": "Powerful → Weaker → Weakest incarnations of same creature",
+    "autoMinting": "Kaiju NFT auto-minted to creator on collection creation",
+    "testSetup": "3 different shadow stages minted to test wallet for immediate viewing"
+  }
+}
