@@ -18,7 +18,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { formatEther } from 'viem';
-import { CHAIN_INFO, DEX_INFO, RISK_LEVEL_DESCRIPTIONS } from '@/lib/types/transformation';
+import { CHAIN_INFO } from '@/lib/types/transformation';
 
 type TransactionStep = 'idle' | 'confirming' | 'pending' | 'success' | 'error';
 
@@ -51,9 +51,15 @@ export function TransformationConfirmation({ onConfirm, costs, isValid }: Transf
     try {
       await onConfirm();
       setTransactionStep('success');
-    } catch (err: any) {
+    } catch (err) {
       setTransactionStep('error');
-      setError(err.message || 'Transaction failed');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (typeof err === 'string') {
+        setError(err);
+      } else {
+        setError('Transaction failed');
+      }
     }
   };
 

@@ -76,7 +76,7 @@ export default function MarketplacePage() {
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Select a Kaiju to sacrifice yourself to. Once you become a Shadow, 
-                you'll automatically mirror their trades and share in their success.
+                you&apos;ll automatically mirror their trades and share in their success.
               </p>
             </motion.div>
           </div>

@@ -1,5 +1,5 @@
 import { apiRequest } from './client';
-import { Shadow, TradingPolicy, PaginatedResponse } from '@/types/models';
+import { Shadow, TradingPolicy, PaginatedResponse, TradeExecution } from '@/types/models';
 
 export interface CreateShadowParams {
   kaijuId: string;
@@ -33,6 +33,36 @@ export interface ShadowEstimate {
 export interface EmergencyStopParams {
   shadowIds?: string[]; // If not provided, stops all shadows
   reason?: string;
+}
+
+export interface ShadowPerformance {
+  totalTrades: number;
+  winRate: number;
+  totalPL: number;
+  avgTradeSize: number;
+  riskScore: number;
+  dailyReturns: { date: Date; return: number }[];
+  topAssets: { asset: string; volume: number; profit: number }[];
+}
+
+export interface ShadowMetadata {
+  name: string;
+  description: string;
+  image: string;
+  attributes: {
+    trait_type: string;
+    value: string | number;
+  }[];
+  externalUrl?: string;
+}
+
+export interface ShadowAnalytics {
+  totalTrades: number;
+  successRate: number;
+  avgProfit: number;
+  bestTrade: TradeExecution;
+  worstTrade: TradeExecution;
+  riskScore: number;
 }
 
 // Shadow API functions
@@ -79,8 +109,8 @@ export const shadowApi = {
   },
   
   // Get shadow performance metrics
-  getShadowPerformance: async (shadowId: string): Promise<any> => {
-    return apiRequest.get(`/shadows/${shadowId}/performance`);
+  getShadowPerformance: async (shadowId: string): Promise<ShadowPerformance> => {
+    return apiRequest.get<ShadowPerformance>(`/shadows/${shadowId}/performance`);
   },
   
   // Get shadow trading history
@@ -88,8 +118,8 @@ export const shadowApi = {
     shadowId: string, 
     page: number = 1, 
     pageSize: number = 20
-  ): Promise<PaginatedResponse<any>> => {
-    return apiRequest.get<PaginatedResponse<any>>(
+  ): Promise<PaginatedResponse<TradeExecution>> => {
+    return apiRequest.get<PaginatedResponse<TradeExecution>>(
       `/shadows/${shadowId}/trades?page=${page}&pageSize=${pageSize}`
     );
   },
@@ -112,8 +142,8 @@ export const shadowApi = {
   },
   
   // Get shadow NFT metadata
-  getShadowMetadata: async (shadowId: string): Promise<any> => {
-    return apiRequest.get(`/shadows/${shadowId}/metadata`);
+  getShadowMetadata: async (shadowId: string): Promise<ShadowMetadata> => {
+    return apiRequest.get<ShadowMetadata>(`/shadows/${shadowId}/metadata`);
   },
   
   // Transfer shadow NFT
@@ -153,15 +183,8 @@ export const shadowApi = {
   },
   
   // Get shadow analytics
-  getShadowAnalytics: async (shadowId: string): Promise<{
-    totalTrades: number;
-    successRate: number;
-    avgProfit: number;
-    bestTrade: any;
-    worstTrade: any;
-    riskScore: number;
-  }> => {
-    return apiRequest.get(`/shadows/${shadowId}/analytics`);
+  getShadowAnalytics: async (shadowId: string): Promise<ShadowAnalytics> => {
+    return apiRequest.get<ShadowAnalytics>(`/shadows/${shadowId}/analytics`);
   },
   
   // Batch operations

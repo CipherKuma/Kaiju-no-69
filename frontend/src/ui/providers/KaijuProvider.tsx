@@ -12,7 +12,7 @@ export function KaijuProvider({ children }: { children: React.ReactNode }) {
     if (kaijus.length === 0) {
       setKaijus(mockKaijus);
     }
-  }, []);
+  }, [kaijus.length, setKaijus]);
 
   return <>{children}</>;
 }

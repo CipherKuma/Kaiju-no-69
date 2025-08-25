@@ -4,9 +4,10 @@ import {
   Hash, 
   TransactionReceipt,
   formatGwei,
-  parseGwei,
   formatEther,
   parseEther,
+  EstimateGasParameters,
+  SendTransactionParameters,
 } from 'viem'
 
 export type TransactionStatus = 'pending' | 'confirmed' | 'failed' | 'reverted'
@@ -22,7 +23,7 @@ export interface TransactionState {
 // Gas estimation utilities
 export async function estimateGasWithBuffer(
   publicClient: PublicClient,
-  transaction: any,
+  transaction: EstimateGasParameters,
   bufferPercentage: number = 20
 ): Promise<bigint> {
   const estimatedGas = await publicClient.estimateGas(transaction)
@@ -165,7 +166,7 @@ export function calculateTransactionCost(
 export async function retryTransactionWithHigherGas(
   walletClient: WalletClient,
   publicClient: PublicClient,
-  originalTx: any,
+  originalTx: SendTransactionParameters,
   gasIncreasePercentage: number = 20
 ): Promise<Hash> {
   const currentGasPrice = await publicClient.getGasPrice()
@@ -174,7 +175,7 @@ export async function retryTransactionWithHigherGas(
   const newTx = {
     ...originalTx,
     gasPrice: newGasPrice,
-  }
+  } as SendTransactionParameters
   
   const hash = await walletClient.sendTransaction(newTx)
   return hash

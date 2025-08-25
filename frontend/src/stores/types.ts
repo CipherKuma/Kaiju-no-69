@@ -115,12 +115,36 @@ export interface PerformanceMetrics {
   profitableTrades: number;
 }
 
+export interface PolicyParameters {
+  // Stop-loss parameters
+  stopLossPercentage?: number;
+  stopLossAmount?: number;
+  
+  // Take-profit parameters
+  takeProfitPercentage?: number;
+  takeProfitAmount?: number;
+  
+  // Trailing-stop parameters
+  trailingStopPercentage?: number;
+  activationPrice?: number;
+  
+  // DCA (Dollar Cost Averaging) parameters
+  dcaAmount?: number;
+  dcaInterval?: 'hourly' | 'daily' | 'weekly' | 'monthly';
+  dcaCount?: number;
+  
+  // Common parameters
+  asset?: string;
+  maxOrderSize?: number;
+  minOrderSize?: number;
+}
+
 export interface Policy {
   id: string;
   name: string;
   type: 'stop-loss' | 'take-profit' | 'trailing-stop' | 'dca';
   enabled: boolean;
-  parameters: Record<string, any>;
+  parameters: PolicyParameters;
 }
 
 export interface Notification {
@@ -156,5 +180,5 @@ export interface ComponentState {
   isActive: boolean;
   isLoading: boolean;
   error?: string;
-  data?: any;
+  data?: unknown;
 }

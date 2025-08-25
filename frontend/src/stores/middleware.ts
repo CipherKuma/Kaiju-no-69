@@ -34,8 +34,8 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
 
 export const logger = loggerImpl as Logger;
 
-function getStateDiff(prev: any, next: any): Record<string, any> {
-  const diff: Record<string, any> = {};
+function getStateDiff<T extends Record<string, unknown>>(prev: T, next: T): Record<string, { prev: unknown; next: unknown }> {
+  const diff: Record<string, { prev: unknown; next: unknown }> = {};
   
   for (const key in next) {
     if (prev[key] !== next[key]) {
@@ -54,18 +54,18 @@ export const createPersistMiddleware = <T extends object>(
   options?: {
     partialize?: (state: T) => Partial<T>;
     version?: number;
-    migrate?: (persistedState: any, version: number) => T;
+    migrate?: (persistedState: unknown, version: number) => T;
   }
 ) => {
   return (config: StateCreator<T>) => {
-    return (set: any, get: any, api: any) => {
+    return <U extends T>(set: StateCreator<U>['setState'], get: StateCreator<U>['getState'], api: StateCreator<U>['api']) => {
       const storage = {
         getItem: (name: string) => {
           const str = localStorage.getItem(name);
           if (!str) return null;
           return JSON.parse(str);
         },
-        setItem: (name: string, value: any) => {
+        setItem: (name: string, value: unknown) => {
           localStorage.setItem(name, JSON.stringify(value));
         },
         removeItem: (name: string) => {
@@ -82,15 +82,15 @@ export const createPersistMiddleware = <T extends object>(
           ? options.migrate(persistedState.state, persistedState.version || 0)
           : persistedState.state;
           
-        const initialState = config(set, get, api);
-        set({ ...initialState, ...migrated }, true);
+        const initialState = config(newSet, get, api);
+        newSet({ ...initialState, ...migrated } as U, true);
       }
 
       const originalSet = set;
-      set = (partial: any, replace?: any) => {
+      const newSet: typeof set = (partial, replace) => {
         originalSet(partial, replace);
         const state = get();
-        const stateToPersist = options?.partialize ? options.partialize(state) : state;
+        const stateToPersist = options?.partialize ? options.partialize(state as T) : state;
         
         storage.setItem(storeName, {
           state: stateToPersist,
@@ -98,7 +98,7 @@ export const createPersistMiddleware = <T extends object>(
         });
       };
 
-      const state = config(set, get, api);
+      const state = config(newSet, get, api);
 
       return {
         ...state,
@@ -111,7 +111,7 @@ export const createPersistMiddleware = <T extends object>(
               const migrated = options?.migrate 
                 ? options.migrate(persistedState.state, persistedState.version || 0)
                 : persistedState.state;
-              set({ ...migrated }, true);
+              newSet({ ...migrated } as U, true);
             }
           }
         }

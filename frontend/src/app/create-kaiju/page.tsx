@@ -146,7 +146,7 @@ export default function CreateKaijuPage() {
           
           // Add to local store
           kaijuStore.addKaiju(createdKaiju);
-        } catch (dbError: any) {
+        } catch (dbError) {
           console.error('Failed to save Kaiju to database:', dbError);
           // Don't fail the whole process if database save fails
           // The NFT is already created on-chain
@@ -163,9 +163,9 @@ export default function CreateKaijuPage() {
       }
       
       setStep('complete');
-    } catch (err: any) {
+    } catch (err) {
       console.error('Failed to create Kaiju collection:', err);
-      setError(err.message || 'Failed to create Kaiju. Please try again.');
+      setError((err instanceof Error ? err.message : String(err)) || 'Failed to create Kaiju. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -374,7 +374,7 @@ export default function CreateKaijuPage() {
                   <div className="bg-stone-800 rounded-2xl p-8">
                     <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                       <ImageIcon className="w-6 h-6 text-purple-400" />
-                      Design Your Kaiju's Appearance
+                      Design Your Kaiju&apos;s Appearance
                     </h2>
 
                     <div className="space-y-6">
@@ -390,7 +390,7 @@ export default function CreateKaijuPage() {
                           className="input-ancient w-full h-32 resize-none"
                         />
                         <p className="text-sm text-gray-500 mt-2">
-                          Be creative! Describe the appearance, style, and unique features of "{kaijuName || 'your Kaiju'}".
+                          Be creative! Describe the appearance, style, and unique features of &quot;{kaijuName || 'your Kaiju'}&quot;.
                         </p>
                       </div>
 
@@ -548,7 +548,7 @@ export default function CreateKaijuPage() {
 
                 <h2 className="text-3xl font-bold mb-4 text-center">Kaiju NFT Collection Created!</h2>
                 <p className="text-xl text-gray-400 mb-6 text-center">
-                  Your trading beast "{kaijuName}" is now minted as an NFT and ready to dominate the markets.
+                  Your trading beast &quot;{kaijuName}&quot; is now minted as an NFT and ready to dominate the markets.
                 </p>
 
                 {/* NFT Preview Section */}

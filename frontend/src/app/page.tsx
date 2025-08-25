@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronRight, Sparkles, Wallet } from 'lucide-react';
-import { useAccount, useBalance, useConnect, useSwitchChain } from 'wagmi';
+import { Sparkles } from 'lucide-react';
+import { useAccount, useBalance, useSwitchChain } from 'wagmi';
 import { ConnectButton } from '@/ui/web3/ConnectButton';
 
 export default function LandingPage() {

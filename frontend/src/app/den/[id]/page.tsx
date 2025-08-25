@@ -13,34 +13,6 @@ import { KaijuDenHeader } from '@/components/den/kaiju-den-header';
 import { useKaijuStore } from '@/lib/stores/kaijuStore';
 import { Kaiju } from '@/types/models';
 
-// Mock data for development
-const mockKaiju: Kaiju = {
-  id: '1',
-  name: 'Dragon King',
-  description: 'The legendary ruler of the Eastern territories',
-  imageUrl: '/kaiju.png',
-  territoryId: 'fire',
-  traderTitle: 'Fire Sovereign',
-  entryFee: 0.1,
-  profitShare: 20,
-  tradingStyle: 'aggressive',
-  isOnline: true,
-  shadows: [],
-  performance: {
-    last24Hours: 5.2,
-    last7Days: 12.8,
-    last30Days: 45.6,
-    totalReturn: 234.5,
-    winRate: 72,
-    totalTrades: 543,
-    avgTradeSize: 2.5,
-    totalValueLocked: 125.8,
-    dailyReturns: []
-  },
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString()
-};
-
 export default function KaijuDenPage() {
   const params = useParams();
   const kaijuId = params.id as string;

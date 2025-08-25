@@ -68,6 +68,15 @@ export interface ChainBreakdown {
   percentage: number;
 }
 
+export interface SwapRoute {
+  dex: string;
+  path: string[];
+  amountIn: number;
+  amountOut: number;
+  priceImpact: number;
+  gas: number;
+}
+
 // Trading API functions
 export const tradingApi = {
   // Get live trading feed
@@ -134,7 +143,7 @@ export const tradingApi = {
       dex: number;
       total: number;
     };
-    route: any[];
+    route: SwapRoute[];
   }> => {
     return apiRequest.post('/trading/simulate', params);
   },

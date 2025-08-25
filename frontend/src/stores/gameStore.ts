@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools, subscribeWithSelector } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import { logger } from './middleware';
-import type { Kaiju, Territory, Shadow, Position } from './types';
+import type { Kaiju, Territory, Position } from './types';
 
 interface GameState {
   // Kaiju Management
@@ -93,7 +93,7 @@ export const useGameStore = create<GameState>()(
   logger(
     devtools(
       subscribeWithSelector(
-        immer((set, get) => ({
+        immer((set) => ({
           ...initialState,
 
           spawnKaiju: (kaiju) => {

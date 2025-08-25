@@ -4,11 +4,8 @@ import {
   useGameStore, 
   useTradingStore, 
   useUIStore,
-  selectUser,
   selectTheme,
-  selectActiveKaiju,
-  selectPortfolio,
-  selectNotifications
+  selectActiveKaiju
 } from './index';
 
 // Example 1: Using store directly
@@ -117,7 +114,7 @@ export function ConfirmModal() {
 
 // Example 5: Loading state management
 export function DataLoader() {
-  const { setGlobalLoading, setComponentLoading } = useUIStore();
+  const { setComponentLoading } = useUIStore();
   const isLoading = useUIStore(state => state.componentLoading.get('data-loader'));
   
   const loadData = async () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { 
   ShadowCard, 
   PortfolioAggregation, 
@@ -9,7 +9,7 @@ import {
   EmergencyControls 
 } from "@/components/dashboard";
 import { StaggerContainer, StaggerItem } from "@/components/ui/animated-components";
-import { Shadow, Kaiju, TradeExecution } from "@/types/models";
+import { Shadow } from "@/types/models";
 import { useMyShadows } from "@/hooks/use-shadow";
 import { useKaijuList } from "@/hooks/use-kaiju";
 import { useTradingFeed } from "@/hooks/use-trading";

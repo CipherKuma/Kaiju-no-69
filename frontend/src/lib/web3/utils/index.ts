@@ -70,31 +70,33 @@ export function getChainRpcUrl(chainId: number, alchemyId?: string): string {
 }
 
 // Error handling
-export function parseWeb3Error(error: any): string {
-  if (error?.message) {
+export function parseWeb3Error(error: unknown): string {
+  if (error && typeof error === 'object' && 'message' in error) {
+    const errorMessage = (error as { message: string }).message;
+    
     // User rejected transaction
-    if (error.message.includes('User rejected') || error.message.includes('User denied')) {
+    if (errorMessage.includes('User rejected') || errorMessage.includes('User denied')) {
       return 'Transaction was cancelled by user'
     }
     
     // Insufficient funds
-    if (error.message.includes('insufficient funds')) {
+    if (errorMessage.includes('insufficient funds')) {
       return 'Insufficient funds for transaction'
     }
     
     // Gas estimation failed
-    if (error.message.includes('gas required exceeds allowance')) {
+    if (errorMessage.includes('gas required exceeds allowance')) {
       return 'Transaction would fail - please check your inputs'
     }
     
     // Contract revert
-    if (error.message.includes('execution reverted')) {
-      const revertReason = error.message.match(/execution reverted: (.*)/)?.[1]
+    if (errorMessage.includes('execution reverted')) {
+      const revertReason = errorMessage.match(/execution reverted: (.*)/)?.[1]
       return revertReason || 'Transaction failed - contract execution reverted'
     }
     
     // Network issues
-    if (error.message.includes('network') || error.message.includes('connection')) {
+    if (errorMessage.includes('network') || errorMessage.includes('connection')) {
       return 'Network connection issue - please try again'
     }
   }

@@ -172,10 +172,37 @@ export interface Asset {
   chainId: string;
 }
 
+// Real-time subscription event data types
+export interface TradeEventData {
+  trade: TradeExecution;
+  shadowsAffected: number;
+}
+
+export interface ShadowUpdateEventData {
+  shadowId: string;
+  updates: Partial<Shadow>;
+}
+
+export interface KaijuStatusEventData {
+  kaijuId: string;
+  isOnline: boolean;
+  lastActivity?: Date;
+}
+
+export interface PerformanceUpdateEventData {
+  kaijuId: string;
+  performance: PerformanceData;
+}
+
+export type RealtimeEventData = 
+  | { type: 'trade'; data: TradeEventData }
+  | { type: 'shadow-update'; data: ShadowUpdateEventData }
+  | { type: 'kaiju-status'; data: KaijuStatusEventData }
+  | { type: 'performance-update'; data: PerformanceUpdateEventData }
+  | { type: 'chat'; data: ChatMessage };
+
 // Real-time subscription types
-export interface RealtimeEvent {
-  type: 'trade' | 'shadow-update' | 'kaiju-status' | 'performance-update' | 'chat';
-  data: any;
+export interface RealtimeEvent extends RealtimeEventData {
   timestamp: Date;
 }
 
@@ -203,8 +230,15 @@ export interface PaginatedResponse<T> {
   hasMore: boolean;
 }
 
+export interface ApiErrorDetails {
+  field?: string;
+  reason?: string;
+  constraints?: Record<string, string>;
+  metadata?: Record<string, unknown>;
+}
+
 export interface ApiError {
   code: string;
   message: string;
-  details?: any;
+  details?: ApiErrorDetails;
 }

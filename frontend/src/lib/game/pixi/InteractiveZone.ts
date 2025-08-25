@@ -374,17 +374,17 @@ export class InteractiveZone extends PIXI.Container {
     return this.isPlayerInside;
   }
 
-  on(event: string, fn: (...args: any[]) => void): this {
+  on(event: string, fn: (...args: unknown[]) => void): this {
     this.eventEmitter.on(event, fn);
     return this;
   }
 
-  off(event: string, fn: (...args: any[]) => void): this {
+  off(event: string, fn: (...args: unknown[]) => void): this {
     this.eventEmitter.off(event, fn);
     return this;
   }
 
-  emit(event: string, ...args: any[]): boolean {
+  emit(event: string, ...args: unknown[]): boolean {
     return this.eventEmitter.emit(event, ...args);
   }
 
