@@ -186,16 +186,17 @@ export async function mintShadowNFT(
     )
 
     return hash
-  } catch (error: any) {
+  } catch (error) {
     // Enhanced error handling
-    if (error.message?.includes('insufficient funds')) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage?.includes('insufficient funds')) {
       throw new Error('Insufficient funds for transaction')
-    } else if (error.message?.includes('user rejected')) {
+    } else if (errorMessage?.includes('user rejected')) {
       throw new Error('Transaction rejected by user')
-    } else if (error.message?.includes('gas')) {
+    } else if (errorMessage?.includes('gas')) {
       throw new Error('Transaction failed due to gas estimation error')
     } else {
-      throw new Error(`Transaction failed: ${error.message || 'Unknown error'}`)
+      throw new Error(`Transaction failed: ${errorMessage || 'Unknown error'}`)
     }
   }
 }
@@ -305,7 +306,7 @@ export function watchShadowNFTTransfers(
 export function watchPolicyEvents(
   publicClient: PublicClient,
   eventType: 'created' | 'claimed',
-  callback: (args: any) => void
+  callback: (args: unknown) => void
 ) {
   const chainId = publicClient.chain?.id
   if (!chainId) throw new Error('Chain ID not found')

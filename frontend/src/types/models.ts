@@ -202,7 +202,7 @@ export type RealtimeEventData =
   | { type: 'chat'; data: ChatMessage };
 
 // Real-time subscription types
-export interface RealtimeEvent extends RealtimeEventData {
+export type RealtimeEvent = RealtimeEventData & {
   timestamp: Date;
 }
 

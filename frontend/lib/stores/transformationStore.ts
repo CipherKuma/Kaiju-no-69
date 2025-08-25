@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { TransformationState, VincentPolicy } from '@/lib/types/transformation';
+import { TransformationState, VincentPolicy } from '@/types/transformation';
 
 interface TransformationStore extends TransformationState {
   setSelectedKaiju: (kaijuId: string) => void;

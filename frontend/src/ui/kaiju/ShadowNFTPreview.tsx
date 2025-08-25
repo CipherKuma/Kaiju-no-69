@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useTransformationStore } from '@/lib/stores/transformationStore';
 import { useKaijuStore } from '@/lib/stores/kaijuStore';
-import { ShadowRarity, ShadowTrait } from '@/lib/types/transformation';
+import { ShadowRarity, ShadowTrait } from '@/types/transformation';
 import { Sparkles, Zap, Skull, Crown, Flame } from 'lucide-react';
 
 const RARITY_COLORS = {

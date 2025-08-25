@@ -18,7 +18,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { formatEther } from 'viem';
-import { CHAIN_INFO } from '@/lib/types/transformation';
+import { CHAIN_INFO } from '@/types/transformation';
 
 type TransactionStep = 'idle' | 'confirming' | 'pending' | 'success' | 'error';
 

@@ -5,15 +5,11 @@ import { motion } from "framer-motion";
 import { Shadow, Kaiju, TradingPolicy } from "@/types/models";
 import { 
   Settings, 
-  DollarSign, 
-  Shield, 
   TrendingUp, 
-  Link,
   Download,
   Upload,
   CheckSquare,
-  Square,
-  AlertTriangle
+  Square
 } from "lucide-react";
 import { theme } from "@/lib/theme";
 

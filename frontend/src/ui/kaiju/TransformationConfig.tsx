@@ -8,7 +8,7 @@ import {
   DURATION_PRICING, 
   TransformationDuration, 
   TransformationCost 
-} from '@/lib/types/transformation';
+} from '@/types/transformation';
 import { 
   Clock, 
   AlertTriangle, 

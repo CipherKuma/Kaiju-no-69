@@ -30,7 +30,7 @@ export class TerrainRenderer {
   private loadedChunks: Set<string> = new Set();
   private currentBiome: BiomeType = 'earth';
   private biomeTextures: Map<BiomeType, PIXI.Texture> = new Map();
-  private assetLoader: any;
+  private assetLoader: AssetLoader;
   
   private biomeColors: Record<BiomeType, BiomeColors> = {
     fire: { primary: 0xFF4500, secondary: 0xFF8C00, accent: 0xFFD700 },
@@ -288,7 +288,7 @@ export class TerrainRenderer {
     // This method is kept for compatibility but doesn't need to do anything
   }
 
-  getTerrainData(): any {
+  getTerrainData(): { biome: BiomeType; chunks: string[]; worldSize: { width: number; height: number } } {
     return {
       biome: this.currentBiome,
       chunks: Array.from(this.chunks.keys()),

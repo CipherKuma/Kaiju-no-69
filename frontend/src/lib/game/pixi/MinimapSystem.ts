@@ -95,7 +95,7 @@ export class MinimapSystem {
     this.uiContainer.addChild(this.debugContainer);
   }
 
-  setTerrain(terrainData: any): void {
+  setTerrain(terrainData: { width?: number; height?: number; tiles?: Array<{ x: number; y: number; type: string }> }): void {
     // Update minimap with terrain information
     this.updateMinimap();
   }
@@ -202,8 +202,8 @@ export class MinimapSystem {
 
   private getMemoryUsage(): string {
     if ('memory' in performance) {
-      const memory = (performance as any).memory;
-      return (memory.usedJSHeapSize / 1024 / 1024).toFixed(1);
+      const memory = (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory;
+      return memory ? (memory.usedJSHeapSize / 1024 / 1024).toFixed(1) : 'N/A';
     }
     return 'N/A';
   }

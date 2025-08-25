@@ -153,7 +153,7 @@ export default function AlgorithmConfiguration({ onConfigurationComplete }: Algo
 
   return (
     <div className="space-y-6">
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
+      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'upload' | 'template' | 'custom')}>
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="template">
             <FileCode className="w-4 h-4 mr-2" />

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { TransformationState, VincentPolicy } from '@/lib/types/transformation';
+import { TransformationState, VincentPolicy } from '@/types/transformation';
 
 interface TransformationStore extends TransformationState {
   setSelectedKaiju: (kaijuId: string) => void;
@@ -15,7 +15,7 @@ const initialState: TransformationState = {
   policy: {
     maxTradeAmount: 100,
     totalBudget: 1000,
-    chain: 'ethereum',
+    chains: ['ethereum'],
     dexes: ['uniswap'],
     riskLevel: 3,
     stopLossPercentage: 10,

@@ -180,16 +180,24 @@ export const theme = {
 };
 
 // Utility functions for theme access
+type ColorValue = string | { DEFAULT: string; rgb: string; oklch: string };
+type NestedColorObject = {
+  [key: string]: ColorValue | NestedColorObject;
+};
+
 export const getColor = (colorPath: string): string => {
   const keys = colorPath.split(".");
-  let value: any = theme.colors;
+  let value: ColorValue | NestedColorObject = theme.colors as NestedColorObject;
   
   for (const key of keys) {
+    if (typeof value === 'string') return value;
     value = value[key];
     if (!value) return "";
   }
   
-  return value.DEFAULT || value;
+  if (typeof value === 'string') return value;
+  if (typeof value === 'object' && 'DEFAULT' in value) return value.DEFAULT;
+  return "";
 };
 
 export const getTerritoryColor = (territory: keyof typeof theme.colors.territories): string => {

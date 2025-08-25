@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Shadow, Kaiju } from "@/types/models";
 import { theme } from "@/lib/theme";
@@ -15,7 +15,6 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  Legend,
 } from "recharts";
 
 interface PortfolioAggregationProps {
@@ -85,7 +84,7 @@ export function PortfolioAggregation({ shadows, kaijus }: PortfolioAggregationPr
             {["1D", "1W", "1M", "ALL"].map((timeframe) => (
               <button
                 key={timeframe}
-                onClick={() => setSelectedTimeframe(timeframe as any)}
+                onClick={() => setSelectedTimeframe(timeframe as "1D" | "1W" | "1M" | "ALL")}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${
                   selectedTimeframe === timeframe
                     ? "bg-primary text-white"

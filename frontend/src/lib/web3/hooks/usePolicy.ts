@@ -18,10 +18,19 @@ export interface PolicyData {
   isActive: boolean
 }
 
+interface PolicyEventArgs {
+  policyId?: bigint
+  owner?: string
+  shadowNftId?: bigint
+  policyType?: number
+  premium?: string
+  timestamp?: bigint
+}
+
 export function usePolicy() {
   const publicClient = usePublicClient()
   const { data: walletClient } = useWalletClient()
-  const [recentPolicies, setRecentPolicies] = useState<any[]>([])
+  const [recentPolicies, setRecentPolicies] = useState<PolicyEventArgs[]>([])
   
   const { execute: executeCreate, ...createState } = useTransaction({
     confirmations: 2,
@@ -83,7 +92,7 @@ export function usePolicy() {
       publicClient,
       'created',
       (args) => {
-        setRecentPolicies(prev => [args, ...prev].slice(0, 10))
+        setRecentPolicies(prev => [args as PolicyEventArgs, ...prev].slice(0, 10))
       }
     )
     

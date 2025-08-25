@@ -109,8 +109,9 @@ export function useInsufficientFunds() {
       // For development, we'll throw an error to indicate this needs real implementation
       throw new Error(`Please manually fund your wallet or implement MCP faucet integration. Required: ${amount} ETH on ${faucetChain}`)
       
-    } catch (error: any) {
-      setFaucetError(error.message || 'Failed to request faucet funds')
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to request faucet funds'
+      setFaucetError(errorMessage)
       return false
     } finally {
       setIsRequestingFaucet(false)

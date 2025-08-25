@@ -59,16 +59,7 @@ export function useTransaction(options: UseTransactionOptions = {}) {
           'Transaction submitted',
           {
             id: toastId,
-            description: explorerUrl ? (
-              <a 
-                href={explorerUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                View on explorer
-              </a>
-            ) : hash,
+            description: explorerUrl ? `View on explorer: ${explorerUrl}` : hash,
           }
         )
       } else {

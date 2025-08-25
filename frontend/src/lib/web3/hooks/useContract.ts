@@ -6,10 +6,10 @@ import { Address } from 'viem'
 import { getContractInstance } from '../contracts'
 import { useTransaction } from './useTransaction'
 
-export function useContractRead<T = any>(
+export function useContractRead<T = unknown>(
   contractName: 'shadowNft' | 'policy',
   functionName: string,
-  args?: any[]
+  args?: readonly unknown[]
 ) {
   const publicClient = usePublicClient()
   const chainId = useChainId()
@@ -32,7 +32,7 @@ export function useContractWrite(
   functionName: string,
   options?: {
     confirmations?: number
-    onSuccess?: (receipt: any) => void
+    onSuccess?: (receipt: { transactionHash: string; blockNumber: bigint; status: 'success' | 'reverted' }) => void
     onError?: (error: Error) => void
   }
 ) {
@@ -42,7 +42,7 @@ export function useContractWrite(
   const { execute, ...transactionState } = useTransaction(options)
   
   const write = useCallback(async (
-    args: any[],
+    args: readonly unknown[],
     overrides?: {
       value?: bigint
       gasPrice?: bigint
