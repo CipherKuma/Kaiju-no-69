@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Shadow, Kaiju } from "@/types/models";
 import { FloatingKaiju } from "@/components/ui/animated-components";
 import { theme } from "@/lib/theme";
-import { formatDistanceToNow } from "date-fns";
 
 interface ShadowCardProps {
   shadow: Shadow;

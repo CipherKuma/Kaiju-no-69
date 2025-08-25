@@ -22,9 +22,11 @@ export default function LandingPage() {
   // Auto-switch to Shape mainnet when connected
   useEffect(() => {
     if (isConnected && chain && chain.id !== 360) {
-      switchChain({ chainId: 360 }).catch((error) => {
+      try {
+        switchChain({ chainId: 360 });
+      } catch (error) {
         console.error('Failed to switch to Shape mainnet:', error);
-      });
+      }
     }
   }, [isConnected, chain, switchChain]);
 

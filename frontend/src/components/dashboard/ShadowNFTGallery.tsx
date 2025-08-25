@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shadow, Kaiju } from "@/types/models";
 import { theme } from "@/lib/theme";
-import { Search, Filter, Grid, List, X } from "lucide-react";
+import { Search, Grid, List, X } from "lucide-react";
 
 interface ShadowNFTGalleryProps {
   shadows: Shadow[];

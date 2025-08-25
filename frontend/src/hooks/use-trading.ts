@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient, UseQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions } from '@tanstack/react-query';
 import { tradingApi } from '@/lib/api/trading-api';
 import { 
   TradeExecution, 
@@ -35,7 +35,7 @@ const tradingKeys = {
 // Trading feed with pagination
 export const useTradingFeed = (
   params: TradingFeedParams = {},
-  options?: UseQueryOptions<PaginatedResponse<TradeExecution>>
+  options?: Omit<UseInfiniteQueryOptions<PaginatedResponse<TradeExecution>, Error, PaginatedResponse<TradeExecution>, PaginatedResponse<TradeExecution>, any[]>, 'queryKey' | 'queryFn' | 'getNextPageParam' | 'initialPageParam'>
 ) => {
   return useInfiniteQuery({
     queryKey: tradingKeys.feed(params),

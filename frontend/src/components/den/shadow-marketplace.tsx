@@ -4,16 +4,13 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { 
   Clock, 
   DollarSign, 
   Shield, 
   TrendingUp, 
   Calendar,
-  ShoppingCart,
-  Filter
+  ShoppingCart
 } from "lucide-react";
 import { useAccount } from "wagmi";
 import { useNotifications } from "@/components/ui/notification";
@@ -64,10 +61,10 @@ const generateMockListings = (): ShadowListing[] => {
   })).sort((a, b) => b.daysRemaining - a.daysRemaining);
 };
 
-export function ShadowMarketplace({ kaijuId }: ShadowMarketplaceProps) {
-  const { address, isConnected } = useAccount();
+export function ShadowMarketplace({ kaijuId: _kaijuId }: ShadowMarketplaceProps) {
+  const { isConnected } = useAccount();
   const { showNotification } = useNotifications();
-  const [listings, setListings] = useState<ShadowListing[]>(generateMockListings());
+  const [listings] = useState<ShadowListing[]>(generateMockListings());
   const [filter, setFilter] = useState<'all' | 'profitable' | 'cheap'>('all');
   const [sortBy, setSortBy] = useState<'price' | 'performance' | 'days'>('days');
   const [selectedListing, setSelectedListing] = useState<ShadowListing | null>(null);

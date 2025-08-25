@@ -5,18 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, 
   TrendingUp, 
-  TrendingDown, 
   Trophy, 
   Users, 
   Copy, 
   Eye, 
   EyeOff,
-  Star,
   Crown,
-  ArrowUpRight,
-  ArrowDownRight,
   RefreshCw,
-  Filter,
   Search,
   UserPlus,
   Award,
@@ -134,15 +129,14 @@ const MOCK_LIVE_TRADES: TradeExecution[] = [
     kaijuName: 'Inferno Rex',
     kaijuAvatar: '/kaiju/fire1.jpg',
     assetPair: {
-      from: { symbol: 'ETH', logoUrl: '/tokens/eth.png', chainId: 1 },
-      to: { symbol: 'USDC', logoUrl: '/tokens/usdc.png', chainId: 1 }
+      from: { symbol: 'ETH', name: 'Ethereum', logoUrl: '/tokens/eth.png', chainId: '1' },
+      to: { symbol: 'USDC', name: 'USD Coin', logoUrl: '/tokens/usdc.png', chainId: '1' }
     },
     amount: 2500,
     pnl: 125.50,
     pnlPercentage: 5.2,
     status: 'success',
     shadowParticipants: 23,
-    userId: 'user1',
     txHash: '0x123...abc'
   },
   {
@@ -154,15 +148,14 @@ const MOCK_LIVE_TRADES: TradeExecution[] = [
     kaijuName: 'Tidal Force',
     kaijuAvatar: '/kaiju/water1.jpg',
     assetPair: {
-      from: { symbol: 'BTC', logoUrl: '/tokens/btc.png', chainId: 1 },
-      to: { symbol: 'ETH', logoUrl: '/tokens/eth.png', chainId: 1 }
+      from: { symbol: 'BTC', name: 'Bitcoin', logoUrl: '/tokens/btc.png', chainId: '1' },
+      to: { symbol: 'ETH', name: 'Ethereum', logoUrl: '/tokens/eth.png', chainId: '1' }
     },
     amount: 5200,
     pnl: -87.30,
     pnlPercentage: -1.7,
     status: 'success',
     shadowParticipants: 18,
-    userId: 'user2',
     txHash: '0x456...def'
   }
 ];
@@ -170,7 +163,7 @@ const MOCK_LIVE_TRADES: TradeExecution[] = [
 export function TradingPostOverlay({ 
   isOpen, 
   onClose, 
-  territoryId, 
+  territoryId: _territoryId, 
   territoryName 
 }: TradingPostOverlayProps) {
   const [activeTab, setActiveTab] = useState<'trades' | 'leaderboard' | 'following'>('trades');
@@ -195,15 +188,14 @@ export function TradingPostOverlay({
         kaijuName: MOCK_TRADERS[Math.floor(Math.random() * MOCK_TRADERS.length)].kaijuName,
         kaijuAvatar: MOCK_TRADERS[Math.floor(Math.random() * MOCK_TRADERS.length)].kaijuAvatar,
         assetPair: {
-          from: { symbol: 'ETH', logoUrl: '/tokens/eth.png', chainId: 1 },
-          to: { symbol: 'USDC', logoUrl: '/tokens/usdc.png', chainId: 1 }
+          from: { symbol: 'ETH', name: 'Ethereum', logoUrl: '/tokens/eth.png', chainId: '1' },
+          to: { symbol: 'USDC', name: 'USD Coin', logoUrl: '/tokens/usdc.png', chainId: '1' }
         },
         amount: Math.random() * 10000 + 100,
         pnl: (Math.random() - 0.4) * 500,
         pnlPercentage: (Math.random() - 0.4) * 10,
         status: 'success',
         shadowParticipants: Math.floor(Math.random() * 50) + 5,
-        userId: 'user' + Math.floor(Math.random() * 3 + 1),
         txHash: '0x' + Math.random().toString(36).substr(2, 9) + '...' + Math.random().toString(36).substr(2, 3)
       };
 

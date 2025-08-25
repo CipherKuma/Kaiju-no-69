@@ -55,19 +55,22 @@
 ## 🔄 How It Works
 
 ```mermaid
-graph LR
+graph TB
     A[Trading Algorithm] -->|Posts Signal| B[Kaiju Service]
-    B -->|Finds Shadows| C[Shadow NFT Holders]
-    B -->|Executes Trades| D[DeFi Protocols]
+    B -->|Finds Shadow Holders| C[Shape Mainnet NFTs]
+    B -->|Executes Trades| D[Shape Sepolia DEX/Perps]
     D -->|Returns Results| E[Update Performance]
-    E -->|Changes Appearance| F[Dynamic NFT Art]
+    E -->|Syncs to Mainnet| F[Dynamic NFT Metadata]
+    F -->|Changes Art| G[ERC7160 Evolution]
 ```
 
+### Cross-Chain Flow
 1. **Expert creates trading algorithm** following our guide
-2. **Algorithm signals profitable trades** to Kaiju Service
-3. **Service executes trades** for all Shadow holders
-4. **Performance updates** reflected in NFT metadata
-5. **Shadow appearance evolves** based on success
+2. **Algorithm signals profitable trades** to Kaiju Service (API)
+3. **Service finds Shadow holders** from Mainnet NFT contracts
+4. **Trades execute on Sepolia** using our deployed DEX/Perps protocols  
+5. **Performance data syncs** from Sepolia back to Mainnet NFTs
+6. **Shadow appearance evolves** on Mainnet based on trading success
 
 ---
 
@@ -88,21 +91,35 @@ graph LR
 
 ## 🛠️ Technical Architecture
 
-### Smart Contracts (Shape Mainnet)
-- **KaijuNFT.sol**: ERC721 for expert trader NFTs
-- **ShadowNFT.sol**: ERC721 with expiration mechanism
-- **TradingVault.sol**: Secure fund management
-- **DynamicMetadata.sol**: ERC7160 implementation
+### Smart Contracts (Shape Mainnet - NFTs)
+- **KaijuNFT.sol**: ERC721 for expert trader NFTs with Transient Labs ERC7160
+- **ShadowNFT.sol**: ERC721 with 30-day expiration + dynamic evolution
+- **DynamicMetadata.sol**: Transient Labs ERC7160 standard implementation
+- **PerformanceOracle.sol**: Links Sepolia trading data to Mainnet NFT evolution
+
+### Smart Contracts (Shape Sepolia - Trading)
+- **TradingVault.sol**: Secure fund management for copy trading
+- **UniswapV2Factory.sol**: DEX for token swaps
+- **UniswapV2Router.sol**: Trading execution layer
+- **CustomPerps.sol**: Perpetual trading protocol
 
 ### Backend Services
-- **Kaiju Service**: Core API managing trades and NFTs
-- **Trading Algorithms**: Standardized bot framework
-- **Performance Oracle**: On-chain performance tracking
+- **Kaiju Service**: Core API managing trades and NFTs across both networks
+- **Trading Algorithms**: Standardized bot framework posting to Sepolia
+- **Cross-Chain Bridge**: Syncs performance data from Sepolia to Mainnet NFTs
 
 ### Frontend
-- **Next.js 15**: Modern React framework
-- **OpenSea SDK**: NFT marketplace integration
-- **Web3 Integration**: Wallet connection and transactions
+- **Next.js 15**: Latest React framework with App Router
+- **TypeScript**: Type-safe development
+- **OpenSea SDK**: NFT marketplace integration (Mainnet)
+- **Multi-Network Web3**: Connects to both Mainnet (NFTs) and Sepolia (Trading)
+- **Tailwind CSS**: Modern styling framework
+
+### Development Stack
+- **Hardhat 3**: Smart contract development and testing framework
+- **Solidity 0.8.24**: Latest contract language features
+- **OpenZeppelin**: Security-audited contract libraries
+- **Transient Labs ERC7160**: Dynamic NFT standard for evolving metadata
 
 ---
 
@@ -160,19 +177,22 @@ Simply visit our dApp at [kaiju-no-69.vercel.app](https://kaiju-no-69.vercel.app
 
 ---
 
-## 🏗️ Built on Shape Mainnet
+## 🏗️ Hybrid Architecture: Shape Mainnet + Sepolia
 
-We chose Shape Mainnet for:
-- **High Performance**: Fast trade execution
-- **Low Fees**: Accessible to all traders
-- **EVM Compatibility**: Seamless integration
-- **Growing Ecosystem**: Part of Shape's DeFi future
+### Smart Separation of Concerns
+- **NFTs on Shape Mainnet**: Kaiju and Shadow NFTs live on mainnet for real ownership and trading
+- **Trading on Shape Sepolia**: Actual DeFi operations execute on testnet for safety and low costs
+
+### Why This Architecture?
+- **Real NFT Value**: NFTs on mainnet can be traded on OpenSea with real value
+- **Safe Trading**: Testnet trading protects users from high gas costs and potential losses
+- **Best of Both Worlds**: Own real NFTs while trading with testnet safety
 
 ### Key Integrations
-- **Transient Labs ERC7160**: Dynamic NFT standard
-- **OpenSea SDK**: Marketplace visibility
-- **Shape DEX**: Native trading execution
-- **Supabase**: Real-time data management
+- **Transient Labs ERC7160**: Dynamic NFT standard (Mainnet)
+- **OpenSea SDK**: Marketplace visibility (Mainnet)
+- **Custom DEX & Perps**: Our deployed protocols (Sepolia)
+- **Supabase**: Real-time data synchronization
 
 ---
 
@@ -194,32 +214,101 @@ We chose Shape Mainnet for:
 - **Dynamic Pricing**: Algorithmic fee optimization
 
 ### NFT Innovation
-- **Utility NFTs**: Real trading functionality
-- **Dynamic Metadata**: Performance-based evolution
-- **Expiration Mechanism**: Sustainable economics
-- **Marketplace Integration**: Full OpenSea support
+- **Utility NFTs**: Real trading functionality beyond just art
+- **Transient Labs ERC7160**: Industry-leading dynamic NFT standard
+- **Performance-Based Evolution**: Metadata changes based on trading success
+- **30-Day Expiration Cycle**: Sustainable tokenomics with re-minting
+- **Cross-Chain Performance Sync**: Sepolia trading data drives Mainnet NFT evolution
+- **OpenSea Integration**: Full marketplace support for dynamic NFTs
 
 ---
 
 ## 🔮 Future Roadmap
 
-### Phase 1: Launch (Current)
-- ✅ Core platform on Shape Mainnet
-- ✅ Basic trading strategies
-- ✅ NFT minting and expiration
-- ✅ OpenSea integration
+### Phase 1: MVP Launch (Current)
+- ✅ Core platform on Shape Mainnet/Sepolia
+- ✅ Basic trading algorithm integration
+- ✅ Dynamic NFT minting with ERC7160
+- ✅ OpenSea marketplace integration
+- ✅ Performance tracking dashboard
 
-### Phase 2: Enhancement
-- 🔄 Advanced AI strategies
-- 🔄 Multi-chain expansion
-- 🔄 Social features
-- 🔄 Mobile app
+### Phase 2: Trust & Security Infrastructure (Q2 2025)
 
-### Phase 3: Ecosystem
-- 📋 DAO governance
-- 📋 Strategy marketplace
-- 📋 Cross-chain bridges
-- 📋 Institutional features
+#### 🔐 ZK-Based Reputation System
+**Problem**: Users can't verify if Kaiju creators are credible or potential scammers
+**Solution**: 
+- **zk DIDs (Zero-Knowledge Decentralized Identities)**: Verifiable credentials without revealing personal info
+- **On-Chain Reputation Scores**: Weighted by trading history, Shadow holder satisfaction, and verified achievements
+- **Reputation Staking**: Kaiju creators stake tokens that get slashed for poor performance/behavior
+- **Community Verification**: Other traders can vouch for algorithms through cryptographic attestations
+
+#### 🛡️ TEE (Trusted Execution Environment) Integration
+**Problem**: Algorithm transparency vs intellectual property protection
+**Solution**:
+- **Intel SGX/AMD SEV**: Trading algorithms run in secure enclaves
+- **Verifiable Execution**: Proof algorithms run as advertised without revealing code
+- **Tamper-Proof Performance**: Impossible to fake trading results
+- **Code Attestation**: Cryptographic proof of algorithm integrity
+
+#### 📚 Version Control & Algorithm Evolution
+**Revolutionary Feature**: Each algorithm update becomes a new Kaiju NFT generation
+- **Kaiju Lineages**: Track evolution from v1.0 → v1.1 → v2.0 etc.
+- **Multi-Version Following**: Shadows can follow any historical version
+- **Performance Comparison**: Side-by-side analysis of algorithm versions
+- **Rollback Capability**: Revert to previous versions if new updates underperform
+- **Algorithmic Archaeology**: Study evolution of successful strategies over time
+
+### Phase 3: Advanced Platform Features (Q3-Q4 2025)
+
+#### 🤖 AI-Powered Risk Assessment
+- **Shadow Suitability Score**: AI matches users to compatible Kaijus based on risk tolerance
+- **Predictive Analytics**: Early warning systems for algorithm performance degradation
+- **Dynamic Fee Optimization**: AI-adjusted mint fees based on performance predictions
+- **Portfolio Optimization**: AI suggests optimal Kaiju combinations
+
+#### 🌐 Multi-Chain Expansion
+- **Cross-Chain Trading**: Execute trades on Ethereum, Arbitrum, Polygon simultaneously
+- **Universal Shadow NFTs**: Single Shadow follows Kaiju across multiple chains
+- **Chain-Specific Strategies**: Kaijus optimized for different network characteristics
+- **Liquidity Aggregation**: Best execution across all supported DEXs
+
+### Phase 4: Ecosystem Maturity (2026+)
+
+#### 🏛️ Decentralized Governance
+- **Kaiju DAO**: Community governs platform parameters and upgrades
+- **Strategy Validation Council**: Expert committee reviews algorithm submissions
+- **Dispute Resolution**: On-chain arbitration for Shadow holder complaints
+- **Platform Revenue Sharing**: DAO treasury distributes profits to stakeholders
+
+#### 🎯 Institutional Features
+- **White-Label Solutions**: Hedge funds can deploy private Kaiju platforms
+- **Regulatory Compliance**: KYC/AML integration for institutional adoption
+- **Professional Analytics**: Advanced reporting and risk management tools
+- **API Integration**: Seamless connection to existing trading infrastructure
+
+#### 🌟 Social Trading Evolution
+- **Kaiju Tournaments**: Competitive events with prize pools
+- **Shadow Guilds**: Communities of followers sharing strategies and insights
+- **Educational Platform**: Learn trading through following successful Kaijus
+- **Mentorship Programs**: Top performers teach newcomers
+
+---
+
+## 🎯 Solving Real Problems
+
+### Current Pain Points in Copy Trading:
+1. **❌ Trust Issues**: No way to verify trader credibility
+2. **❌ Black Box Algorithms**: Users blindly follow unknown strategies  
+3. **❌ No Version Control**: Algorithm updates break user expectations
+4. **❌ Centralized Risk**: Single point of failure for popular traders
+5. **❌ Poor UX**: Complex interfaces intimidate newcomers
+
+### Our Solutions:
+1. **✅ zk DIDs + Reputation**: Cryptographically verifiable trader credentials
+2. **✅ TEE Transparency**: Prove algorithm behavior without revealing code
+3. **✅ NFT Versioning**: Choose which version of a strategy to follow
+4. **✅ Decentralized Execution**: No single point of failure
+5. **✅ Gamified UX**: NFT-based interface makes trading accessible and fun
 
 ---
 

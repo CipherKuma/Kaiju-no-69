@@ -8,6 +8,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'fire',
     tradingStyle: 'aggressive',
     description: 'A fearless fire dragon that dominates volatile markets with aggressive trades.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.05,
+    profitShare: 20,
+    performance: {
+      last30Days: 18.5,
+      totalReturn: 245.3,
+      winRate: 72,
+      totalTrades: 1543,
+      sharpeRatio: 2.1,
+      maxDrawdown: -12.8
+    },
     stats: {
       winRate: 72,
       totalTrades: 1543,
@@ -22,6 +34,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'water',
     tradingStyle: 'balanced',
     description: 'Master of the seas, flowing with market currents for balanced gains.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.03,
+    profitShare: 15,
+    performance: {
+      last30Days: 12.3,
+      totalReturn: 187.6,
+      winRate: 68,
+      totalTrades: 892,
+      sharpeRatio: 1.8,
+      maxDrawdown: -8.4
+    },
     stats: {
       winRate: 68,
       totalTrades: 892,
@@ -36,6 +60,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'earth',
     tradingStyle: 'conservative',
     description: 'Solid as bedrock, this earth giant favors steady, conservative strategies.',
+    isOnline: false,
+    shadows: [],
+    entryFee: 0.02,
+    profitShare: 12,
+    performance: {
+      last30Days: 8.2,
+      totalReturn: 134.7,
+      winRate: 81,
+      totalTrades: 567,
+      sharpeRatio: 1.5,
+      maxDrawdown: -5.2
+    },
     stats: {
       winRate: 81,
       totalTrades: 567,
@@ -50,6 +86,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'air',
     tradingStyle: 'arbitrage',
     description: 'Swift as wind, catching price differences across multiple exchanges.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.01,
+    profitShare: 10,
+    performance: {
+      last30Days: 4.7,
+      totalReturn: 198.3,
+      winRate: 89,
+      totalTrades: 2341,
+      sharpeRatio: 2.4,
+      maxDrawdown: -3.1
+    },
     stats: {
       winRate: 89,
       totalTrades: 2341,
@@ -64,6 +112,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'fire',
     tradingStyle: 'aggressive',
     description: 'The king of high-risk trades, turning market heat into massive gains.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.08,
+    profitShare: 25,
+    performance: {
+      last30Days: 25.8,
+      totalReturn: 312.4,
+      winRate: 65,
+      totalTrades: 987,
+      sharpeRatio: 1.9,
+      maxDrawdown: -18.6
+    },
     stats: {
       winRate: 65,
       totalTrades: 987,
@@ -78,6 +138,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'water',
     tradingStyle: 'conservative',
     description: 'Cool and calculated, freezing assets at optimal moments.',
+    isOnline: false,
+    shadows: [],
+    entryFee: 0.025,
+    profitShare: 13,
+    performance: {
+      last30Days: 9.1,
+      totalReturn: 156.8,
+      winRate: 78,
+      totalTrades: 432,
+      sharpeRatio: 1.6,
+      maxDrawdown: -6.3
+    },
     stats: {
       winRate: 78,
       totalTrades: 432,
@@ -92,6 +164,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'air',
     tradingStyle: 'balanced',
     description: 'Harnesses market volatility like lightning in a storm.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.04,
+    profitShare: 18,
+    performance: {
+      last30Days: 15.2,
+      totalReturn: 203.7,
+      winRate: 70,
+      totalTrades: 1123,
+      sharpeRatio: 1.7,
+      maxDrawdown: -10.9
+    },
     stats: {
       winRate: 70,
       totalTrades: 1123,
@@ -106,6 +190,18 @@ export const mockKaijus: Kaiju[] = [
     territory: 'earth',
     tradingStyle: 'arbitrage',
     description: 'Sees through market opacity with crystalline clarity.',
+    isOnline: true,
+    shadows: [],
+    entryFee: 0.015,
+    profitShare: 11,
+    performance: {
+      last30Days: 6.3,
+      totalReturn: 178.9,
+      winRate: 85,
+      totalTrades: 1876,
+      sharpeRatio: 2.2,
+      maxDrawdown: -4.1
+    },
     stats: {
       winRate: 85,
       totalTrades: 1876,

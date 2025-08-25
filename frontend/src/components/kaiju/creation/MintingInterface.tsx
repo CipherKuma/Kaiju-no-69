@@ -19,7 +19,9 @@ import {
   Rocket
 } from 'lucide-react'
 import confetti from 'canvas-confetti'
-import type { VincentAgentConfig } from './VincentAgentSetup'
+// import type { VincentAgentConfig } from './VincentAgentSetup' // File doesn't exist
+// Temporary type definition
+type VincentAgentConfig = any;
 import type { TerritoryConfig } from './TerritoryCustomization'
 import type { FeeConfig } from './FeeConfiguration'
 
@@ -52,7 +54,7 @@ export default function MintingInterface({ kaijuData, onMintComplete }: MintingI
     { id: 'mint', name: 'Minting Kaiju NFT', status: 'pending' },
     { id: 'register', name: 'Registering on-chain', status: 'pending' }
   ])
-  const [estimatedGas, setEstimatedGas] = useState<string>('0.025')
+  const [estimatedGas] = useState<string>('0.025')
   const [tokenId, setTokenId] = useState<string>('')
 
   const updateStepStatus = (stepId: string, status: MintingStep['status'], txHash?: string, error?: string) => {

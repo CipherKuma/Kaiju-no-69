@@ -59,7 +59,7 @@ export const KaijuGame: React.FC<KaijuGameProps> = ({
     }
   };
 
-  const handleUpdate = (delta: number) => {
+  const handleUpdate = (_delta: number) => {
     // Game loop handled by GameManager
   };
 
@@ -74,7 +74,6 @@ export const KaijuGame: React.FC<KaijuGameProps> = ({
   const handleSpawnKaiju = () => {
     if (!gameManagerRef.current) return;
 
-    const randomId = Math.floor(Math.random() * 3) + 1;
     const randomX = Math.random() * worldWidth;
     const randomY = Math.random() * worldHeight;
 

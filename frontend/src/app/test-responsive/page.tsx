@@ -31,10 +31,10 @@ export default function ResponsiveTestPage() {
   const { deviceType, orientation, width, height, isOnline } = useResponsive();
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
 
   // Test swipe gestures
-  useSwipeGestures(containerRef, {
+  useSwipeGestures(containerRef as React.RefObject<HTMLElement>, {
     onSwipeLeft: () => console.log('Swiped left'),
     onSwipeRight: () => console.log('Swiped right'),
     onSwipeUp: () => console.log('Swiped up'),

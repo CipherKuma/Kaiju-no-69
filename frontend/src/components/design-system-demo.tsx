@@ -14,12 +14,10 @@ import {
   BattleEntrance,
   VictoryAnimation,
 } from "@/components/ui/animated-components";
-import { useTheme } from "@/hooks/use-theme";
 
 export default function DesignSystemDemo() {
   const [showDamage, setShowDamage] = useState(false);
   const [showVictory, setShowVictory] = useState(false);
-  const { colors, fonts } = useTheme();
 
   return (
     <div className="min-h-screen bg-background p-8 space-y-12">

@@ -9,7 +9,6 @@ import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import { 
   TrendingUp, 
-  Users, 
   Zap, 
   Trophy,
   Info,
@@ -69,7 +68,7 @@ export default function FeeConfiguration({ onConfigurationComplete }: FeeConfigu
   const [entryFee, setEntryFee] = useState(50) // In USD
   const [profitShare, setProfitShare] = useState(20) // Percentage
   const [tiersEnabled, setTiersEnabled] = useState(true)
-  const [customTiers, setCustomTiers] = useState(defaultTiers)
+  const [customTiers] = useState(defaultTiers)
 
   // Calculate projections
   const calculateProjections = () => {

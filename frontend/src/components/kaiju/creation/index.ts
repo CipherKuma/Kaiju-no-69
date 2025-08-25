@@ -1,7 +1,5 @@
 export { default as AIAppearanceGenerator } from './AIAppearanceGenerator'
 export { default as AlgorithmConfiguration } from './AlgorithmConfiguration'
-export { default as VincentAgentSetup } from './VincentAgentSetup'
-export type { VincentAgentConfig } from './VincentAgentSetup'
 export { default as TerritoryCustomization } from './TerritoryCustomization'
 export type { TerritoryConfig } from './TerritoryCustomization'
 export { default as FeeConfiguration } from './FeeConfiguration'

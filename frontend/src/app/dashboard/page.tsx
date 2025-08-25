@@ -9,7 +9,7 @@ import {
   EmergencyControls 
 } from "@/components/dashboard";
 import { StaggerContainer, StaggerItem } from "@/components/ui/animated-components";
-import { Shadow } from "@/types/models";
+import { Shadow, TradeExecution } from "@/types/models";
 import { useMyShadows } from "@/hooks/use-shadow";
 import { useKaijuList } from "@/hooks/use-kaiju";
 import { useTradingFeed } from "@/hooks/use-trading";
@@ -19,7 +19,7 @@ export default function DashboardPage() {
   const { data: kaijuListData } = useKaijuList();
   const kaijus = kaijuListData?.data || [];
   const tradingFeedQuery = useTradingFeed();
-  const recentTrades = tradingFeedQuery.data?.pages?.[0]?.data || [];
+  const recentTrades = (tradingFeedQuery.data as any)?.pages?.[0]?.data || [];
   const [activeTab, setActiveTab] = useState<"overview" | "gallery" | "manage" | "emergency">("overview");
   
   const handleQuickAction = (action: string, shadowId: string) => {
@@ -61,7 +61,7 @@ export default function DashboardPage() {
   };
   
   const getTradesForShadow = (shadow: Shadow) => {
-    return recentTrades.filter(trade => trade.kaijuId === shadow.kaijuId);
+    return recentTrades.filter((trade: TradeExecution) => trade.kaijuId === shadow.kaijuId);
   };
   
   if (shadowsLoading) {

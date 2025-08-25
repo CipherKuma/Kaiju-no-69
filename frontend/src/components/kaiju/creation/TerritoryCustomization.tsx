@@ -107,7 +107,7 @@ export default function TerritoryCustomization({ onCustomizationComplete }: Terr
     accent: '#10b981'
   })
   const [landmarks, setLandmarks] = useState<Landmark[]>([])
-  const [selectedLandmarkType, setSelectedLandmarkType] = useState('')
+  const [_selectedLandmarkType] = useState('')
 
   const handleBiomeSelect = (biomeId: string) => {
     setSelectedBiome(biomeId)
@@ -130,11 +130,6 @@ export default function TerritoryCustomization({ onCustomizationComplete }: Terr
     setLandmarks([...landmarks, newLandmark])
   }
 
-  const updateLandmarkSize = (id: string, size: Landmark['size']) => {
-    setLandmarks(landmarks.map(l => 
-      l.id === id ? { ...l, size } : l
-    ))
-  }
 
   const removeLandmark = (id: string) => {
     setLandmarks(landmarks.filter(l => l.id !== id))

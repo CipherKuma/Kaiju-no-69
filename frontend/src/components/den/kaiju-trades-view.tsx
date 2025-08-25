@@ -35,7 +35,7 @@ const generateMockTrades = (): Trade[] => {
   return Array.from({ length: 20 }, (_, i) => ({
     id: `trade-${i}`,
     timestamp: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000),
-    type: Math.random() > 0.5 ? 'buy' : 'sell',
+    type: Math.random() > 0.5 ? 'buy' : 'sell' as 'buy' | 'sell',
     token: tokens[Math.floor(Math.random() * tokens.length)],
     amount: Math.floor(Math.random() * 10000) + 1000,
     price: Math.random() * 0.001,
@@ -51,7 +51,6 @@ const generateMockTrades = (): Trade[] => {
 export function KaijuTradesView({ kaijuId }: KaijuTradesViewProps) {
   const [trades, setTrades] = useState<Trade[]>([]);
   const [filter, setFilter] = useState<'all' | 'profitable' | 'loss'>('all');
-  const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d'>('7d');
 
   useEffect(() => {
     // In production, fetch trades from API

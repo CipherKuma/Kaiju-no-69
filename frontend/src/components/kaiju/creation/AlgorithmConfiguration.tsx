@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Upload, Code, FileCode, Play, Settings, AlertCircle } from 'lucide-react'
+import { Upload, Code, FileCode, Play, Settings } from 'lucide-react'
 import { motion } from 'framer-motion'
 import InfoTooltip from './InfoTooltip'
 

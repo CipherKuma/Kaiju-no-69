@@ -174,7 +174,7 @@ export const KingdomTerritoryView: React.FC<KingdomTerritoryViewProps> = ({
       if (data.playerName) {
         setConnectedPlayers(prev => {
           const newMap = new Map(prev);
-          newMap.set(data.shadowId, { position: data.position, name: data.playerName });
+          newMap.set(data.shadowId, { position: data.position, name: data.playerName ?? 'Unknown' });
           return newMap;
         });
       }
@@ -224,20 +224,6 @@ export const KingdomTerritoryView: React.FC<KingdomTerritoryViewProps> = ({
     });
   };
 
-  const getBiomeFromKaijuId = (id: string): 'fire' | 'water' | 'earth' | 'air' => {
-    // Simple mapping based on last digit or character of ID
-    const lastChar = id.slice(-1);
-    const biomes: Array<'fire' | 'water' | 'earth' | 'air'> = ['fire', 'water', 'earth', 'air'];
-    
-    // If it's a number, use it directly
-    if (!isNaN(Number(lastChar))) {
-      return biomes[Number(lastChar) % 4];
-    }
-    
-    // Otherwise use character code
-    const hash = lastChar.charCodeAt(0);
-    return biomes[hash % 4];
-  };
 
   useEffect(() => {
     return () => {
@@ -250,17 +236,7 @@ export const KingdomTerritoryView: React.FC<KingdomTerritoryViewProps> = ({
     };
   }, [kaijuId]);
 
-  const handleToggleMinimap = () => {
-    if (territoryManagerRef.current) {
-      territoryManagerRef.current.toggleMinimap();
-    }
-  };
 
-  const handleToggleStats = () => {
-    if (territoryManagerRef.current) {
-      territoryManagerRef.current.toggleDebugStats();
-    }
-  };
 
   if (error) {
     return (

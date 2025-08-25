@@ -33,7 +33,7 @@ export default function KaijuDenPage() {
         name: `Kaiju #${kaijuId}`,
         description: 'A powerful trading beast',
         imageUrl: '/kaiju.png',
-        territoryId: 'unknown',
+        territory: 'unknown',
         traderTitle: 'Trading Beast',
         entryFee: 0.001,
         profitShare: 20,
@@ -41,18 +41,14 @@ export default function KaijuDenPage() {
         isOnline: false,
         shadows: [],
         performance: {
-          last24Hours: 0,
-          last7Days: 0,
           last30Days: 0,
           totalReturn: 0,
           winRate: 0,
           totalTrades: 0,
-          avgTradeSize: 0,
-          totalValueLocked: 0,
+          sharpeRatio: 0,
+          maxDrawdown: 0,
           dailyReturns: []
-        },
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        }
       });
     }
   }, [kaijuId, kaijuStore]);

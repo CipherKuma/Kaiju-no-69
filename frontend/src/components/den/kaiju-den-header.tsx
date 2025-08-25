@@ -13,7 +13,6 @@ import {
   Share2,
   Twitter
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useNotifications } from "@/components/ui/notification";
 
 interface KaijuDenHeaderProps {
@@ -21,7 +20,6 @@ interface KaijuDenHeaderProps {
 }
 
 export function KaijuDenHeader({ kaiju }: KaijuDenHeaderProps) {
-  const router = useRouter();
   const { showNotification } = useNotifications();
   const isPositivePerformance = kaiju.performance?.last30Days >= 0;
 
@@ -73,10 +71,10 @@ export function KaijuDenHeader({ kaiju }: KaijuDenHeaderProps) {
             
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline" className="text-xs">
-                {kaiju.tradingStyle?.charAt(0).toUpperCase() + kaiju.tradingStyle?.slice(1)} Trader
+                {kaiju.tradingStyle ? kaiju.tradingStyle.charAt(0).toUpperCase() + kaiju.tradingStyle.slice(1) : 'Unknown'} Trader
               </Badge>
               <Badge variant="secondary" className="text-xs">
-                {kaiju.territoryId?.charAt(0).toUpperCase() + kaiju.territoryId?.slice(1)} Territory
+                {kaiju.territory.charAt(0).toUpperCase() + kaiju.territory.slice(1)} Territory
               </Badge>
             </div>
           </div>
@@ -118,7 +116,7 @@ export function KaijuDenHeader({ kaiju }: KaijuDenHeaderProps) {
             <div className="flex items-center gap-2 text-stone-400 mb-1">
               <span className="text-sm">TVL</span>
             </div>
-            <p className="text-2xl font-bold text-stone-200">{kaiju.performance?.totalValueLocked?.toFixed(2) || '0.00'} ETH</p>
+            <p className="text-2xl font-bold text-stone-200">0.00 ETH</p>
           </div>
         </div>
 

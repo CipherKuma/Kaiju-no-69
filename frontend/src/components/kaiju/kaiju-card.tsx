@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { 
   FloatingKaiju, 
-  GlowingElement, 
   PulsingElement 
 } from "@/components/ui/animated-components";
 import { Kaiju } from "@/types/models";
@@ -16,8 +15,7 @@ import {
   Users, 
   TrendingUp, 
   TrendingDown, 
-  Crown, 
-  Eye,
+  Crown,
   DollarSign,
   Percent
 } from "lucide-react";
@@ -37,11 +35,11 @@ export function KaijuCard({
   kaiju, 
   onBecomeShadow, 
   onViewKingdom,
-  onQuickView,
+  onQuickView: _onQuickView,
   isCompareMode = false,
   isSelected = false
 }: KaijuCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [_isHovered, setIsHovered] = useState(false);
   
   // Generate sample chart data from daily returns
   const chartData = kaiju.performance.dailyReturns?.slice(-30).map((day, index) => ({
@@ -64,7 +62,7 @@ export function KaijuCard({
     return { label: "Common", color: "bg-gray-500" };
   };
 
-  const rarity = getRarityBadge();
+  const _rarity = getRarityBadge();
 
   return (
     <motion.div

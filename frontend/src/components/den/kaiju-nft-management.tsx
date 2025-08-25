@@ -6,9 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink, Copy, CheckCircle, DollarSign, Tag, TrendingUp, Package, Image as ImageIcon } from "lucide-react";
+import { ExternalLink, Copy, CheckCircle, DollarSign, Tag, TrendingUp, Package } from "lucide-react";
 import { useAccount } from "wagmi";
 import { useNotifications } from "@/components/ui/notification";
 
@@ -17,7 +16,7 @@ interface KaijuNFTManagementProps {
 }
 
 export function KaijuNFTManagement({ kaiju }: KaijuNFTManagementProps) {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const { showNotification } = useNotifications();
   const [listingPrice, setListingPrice] = useState('');
   const [isListing, setIsListing] = useState(false);
