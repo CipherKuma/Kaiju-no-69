@@ -9,7 +9,7 @@ import {
 // Connection status hook
 export const useSocketConnection = () => {
   const [connected, setConnected] = useState(false);
-  const [latency, setLatency] = useState(0);
+  const [latency, _setLatency] = useState(0);
 
   useEffect(() => {
     const unsubscribe = realtimeClient.onConnectionChange(setConnected);

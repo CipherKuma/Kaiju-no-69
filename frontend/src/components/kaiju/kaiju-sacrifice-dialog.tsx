@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { AlertCircle, Clock, DollarSign, Shield, Zap } from "lucide-react";
+import { AlertCircle, Shield, Zap } from "lucide-react";
 import { useAccount, useBalance } from "wagmi";
 import { useNotifications } from "@/components/ui/notification";
 

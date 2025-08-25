@@ -4,13 +4,6 @@ import { useCallback, useState } from 'react'
 import { useAccount, usePublicClient, useChainId } from 'wagmi'
 import { formatEther, parseEther } from 'viem'
 
-// MCP Faucet integration types
-interface FaucetRequest {
-  chain: string
-  address: string
-  amount?: number
-}
-
 // Chain mapping for MCP faucet
 const CHAIN_TO_FAUCET_ID: { [key: number]: string } = {
   1: 'ethereum-mainnet', // Not supported by faucet, but included for completeness

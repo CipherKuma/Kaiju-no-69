@@ -202,7 +202,7 @@ export const useExtendShadow = () => {
       shadowId: string; 
       additionalDays: 7 | 14 | 30 
     }) => shadowApi.extendShadow(shadowId, additionalDays),
-    onSuccess: (result, { shadowId }) => {
+    onSuccess: (_result, { shadowId }) => {
       // Update shadow in cache
       queryClient.invalidateQueries({ queryKey: shadowKeys.detail(shadowId) });
       queryClient.invalidateQueries({ queryKey: shadowKeys.lists() });

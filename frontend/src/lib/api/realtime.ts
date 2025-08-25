@@ -2,10 +2,7 @@ import { io, Socket } from 'socket.io-client';
 import { tokenManager } from './client';
 import { 
   TradeExecution, 
-  Shadow, 
-  Kaiju, 
   ChatMessage,
-  RealtimeEvent,
   Position 
 } from '@/types/models';
 
@@ -69,7 +66,6 @@ class RealtimeClient {
   private subscriptions: Map<string, Set<EventHandler>> = new Map();
   private connectionListeners: Set<(connected: boolean) => void> = new Set();
   private messageQueue: { event: string; data: any }[] = [];
-  private reconnectAttempts = 0;
   private options: SubscriptionOptions = {};
 
   constructor() {
@@ -116,7 +112,6 @@ class RealtimeClient {
     // Connection events
     this.socket.on('connect', () => {
       console.log('WebSocket connected');
-      this.reconnectAttempts = 0;
       this.notifyConnectionListeners(true);
       this.resubscribeAll();
     });
@@ -132,7 +127,6 @@ class RealtimeClient {
 
     this.socket.on('reconnect', (attemptNumber) => {
       console.log('WebSocket reconnected after', attemptNumber, 'attempts');
-      this.reconnectAttempts = 0;
     });
 
     // Set up handlers for all subscribed events

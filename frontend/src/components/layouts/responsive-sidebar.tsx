@@ -24,7 +24,7 @@ export function ResponsiveSidebar({
   const sidebarRef = useRef<HTMLDivElement>(null);
 
   // Handle swipe gestures for tablet
-  useSwipeGestures(sidebarRef, {
+  useSwipeGestures(sidebarRef as React.RefObject<HTMLElement>, {
     onSwipeLeft: side === 'right' ? () => setIsOpen(false) : undefined,
     onSwipeRight: side === 'left' ? () => setIsOpen(false) : undefined,
   });

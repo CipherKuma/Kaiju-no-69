@@ -173,17 +173,22 @@ export async function mintShadowNFT(
     )
   }
 
-  const contract = getContractInstance('shadowNft', chainId, walletClient)
+  const contract = getContractInstance('shadowNft', chainId, publicClient)
   
   try {
-    const hash = await contract.write.mintShadow(
-      [tokenId, metadata],
-      {
-        value: parseEther(value),
-        account,
-        gas: gasEstimation.gasEstimate,
-      }
-    )
+    // Simulate the contract call first
+    const { request } = await publicClient.simulateContract({
+      address: contract.address,
+      abi: SHADOW_NFT_ABI,
+      functionName: 'mintShadow',
+      args: [tokenId, metadata],
+      account,
+      value: parseEther(value),
+      gas: gasEstimation.gasEstimate,
+    })
+    
+    // Execute the transaction
+    const hash = await walletClient.writeContract(request)
 
     return hash
   } catch (error) {
@@ -217,15 +222,20 @@ export async function createPolicy(
     throw new Error('No account connected')
   }
 
-  const contract = getContractInstance('policy', chainId, walletClient)
+  const contract = getContractInstance('policy', chainId, publicClient)
   
-  const hash = await contract.write.createPolicy(
-    [policyId, shadowNftId, policyType, parseEther(premium)],
-    {
-      value: parseEther(premium),
-      account,
-    }
-  )
+  // Simulate the contract call first
+  const { request } = await publicClient.simulateContract({
+    address: contract.address,
+    abi: POLICY_CONTRACT_ABI,
+    functionName: 'createPolicy',
+    args: [policyId, shadowNftId, policyType, parseEther(premium)],
+    account,
+    value: parseEther(premium),
+  })
+  
+  // Execute the transaction
+  const hash = await walletClient.writeContract(request)
 
   return hash
 }
@@ -242,9 +252,19 @@ export async function claimPolicy(
     throw new Error('No account connected')
   }
 
-  const contract = getContractInstance('policy', chainId, walletClient)
+  const contract = getContractInstance('policy', chainId, publicClient)
   
-  const hash = await contract.write.claimPolicy([policyId], { account })
+  // Simulate the contract call first
+  const { request } = await publicClient.simulateContract({
+    address: contract.address,
+    abi: POLICY_CONTRACT_ABI,
+    functionName: 'claimPolicy',
+    args: [policyId],
+    account,
+  })
+  
+  // Execute the transaction
+  const hash = await walletClient.writeContract(request)
 
   return hash
 }

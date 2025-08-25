@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient, UseQueryOptions } from '@tanstack/react-query';
 import { kaijuApi } from '@/lib/api/kaiju-api';
 import { Kaiju, PaginatedResponse, PerformanceData } from '@/types/models';
-import { KaijuFilters, KaijuSortOptions, KaijuListParams } from '@/lib/api/kaiju-api';
+import { KaijuListParams } from '@/lib/api/kaiju-api';
 
 // Query keys
 const kaijuKeys = {
@@ -70,7 +70,7 @@ export const useTopKaiju = (
 ) => {
   return useQuery({
     queryKey: kaijuKeys.top(period),
-    queryFn: () => kaijuApi.getTopKaiju(limit, period),
+    queryFn: () => kaijuApi.getTopKaiju(limit),
     staleTime: 5 * 60 * 1000, // 5 minutes
     ...options,
   });
@@ -184,7 +184,7 @@ export const useKaijuTradingHistory = (kaijuId: string, pageSize: number = 20) =
   return useQuery({
     queryKey: [...kaijuKeys.trades(kaijuId), pageSize],
     queryFn: ({ pageParam = 1 }) => 
-      kaijuApi.getKaijuTradingHistory(kaijuId, pageParam, pageSize),
+      kaijuApi.getKaijuTradingHistory(kaijuId, pageParam as number, pageSize),
     enabled: !!kaijuId,
     staleTime: 30 * 1000, // 30 seconds
   });

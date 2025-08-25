@@ -156,7 +156,7 @@ export function useUnifiedInput(
   handlers: PointerHandlers
 ) {
   const lastTap = useRef<number>(0);
-  const tapTimeout = useRef<NodeJS.Timeout>();
+  const tapTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const getCoordinates = useCallback((e: MouseEvent | TouchEvent) => {
     if ('touches' in e) {
@@ -235,7 +235,7 @@ export function useLongPress(
   delay = 500
 ) {
   const [isPressed, setIsPressed] = useState(false);
-  const timeout = useRef<NodeJS.Timeout>();
+  const timeout = useRef<NodeJS.Timeout | null>(null);
 
   const start = useCallback(() => {
     setIsPressed(true);

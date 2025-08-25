@@ -86,6 +86,7 @@ export function ShadowNFTPreview() {
       }, 30);
       return () => clearInterval(progressInterval);
     }
+    return () => {}; // Return empty cleanup function
   }, [isTransforming]);
 
   if (!selectedKaijuData) {

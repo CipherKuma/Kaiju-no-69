@@ -35,7 +35,7 @@ import {
   BarChart3,
   Crown
 } from "lucide-react";
-import { LineChart, Line, BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart, Line, BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { theme } from "@/lib/theme";
 
 interface KaijuQuickViewModalProps {
@@ -134,7 +134,7 @@ export function KaijuQuickViewModal({
                 </DialogDescription>
                 <div className="flex items-center gap-2 mt-2">
                   <Badge variant="outline">
-                    {kaiju.tradingStyle?.charAt(0).toUpperCase() + kaiju.tradingStyle?.slice(1) || "Balanced"} Trader
+                    {kaiju.tradingStyle ? kaiju.tradingStyle.charAt(0).toUpperCase() + kaiju.tradingStyle.slice(1) : "Balanced"} Trader
                   </Badge>
                   <Badge className="bg-purple-500">
                     <Crown className="h-3 w-3 mr-1" />

@@ -30,6 +30,7 @@ export function TradingFeedDemo() {
       
       return () => clearInterval(interval);
     }
+    return undefined;
   }, [trades.length]);
   
   return (

@@ -362,7 +362,7 @@ export const kaijuApi = {
   },
   
   // Get Kaiju's active shadows
-  getKaijuShadows: async (kaijuId: string): Promise<any[]> => {
+  getKaijuShadows: async (_kaijuId: string): Promise<any[]> => {
     // This would need a new endpoint in the backend
     return [];
   },
@@ -408,11 +408,11 @@ export const kaijuApi = {
   },
 
   // Other methods can be implemented as needed...
-  followKaiju: async (kaijuId: string): Promise<{ success: boolean }> => {
+  followKaiju: async (_kaijuId: string): Promise<{ success: boolean }> => {
     return { success: true };
   },
   
-  unfollowKaiju: async (kaijuId: string): Promise<{ success: boolean }> => {
+  unfollowKaiju: async (_kaijuId: string): Promise<{ success: boolean }> => {
     return { success: true };
   },
   
@@ -420,11 +420,11 @@ export const kaijuApi = {
     return [];
   },
   
-  rateKaiju: async (kaijuId: string, rating: number): Promise<{ success: boolean }> => {
+  rateKaiju: async (_kaijuId: string, _rating: number): Promise<{ success: boolean }> => {
     return { success: true };
   },
   
-  reportKaiju: async (kaijuId: string, reason: string): Promise<{ success: boolean }> => {
+  reportKaiju: async (_kaijuId: string, _reason: string): Promise<{ success: boolean }> => {
     return { success: true };
   },
 };

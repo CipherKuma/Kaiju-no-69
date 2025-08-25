@@ -130,7 +130,7 @@ export const TerritoryAnimation = ({
   territory 
 }: TerritoryAnimationProps) => (
   <motion.div
-    variants={territoryAnimations[territory]}
+    variants={territoryAnimations[territory] as any}
     initial="initial"
     animate="animate"
     className={className}

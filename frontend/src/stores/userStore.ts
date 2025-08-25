@@ -86,10 +86,10 @@ export const useUserStore = create<UserState>()(
   logger(
     devtools(
       persistMiddleware(
-        immer((set) => ({
+        (immer((set) => ({
           ...initialState,
 
-          login: async (username: string, password: string) => { // password will be used in actual implementation
+          login: async (username: string, _password: string) => { // password will be used in actual implementation
             set((state) => {
               state.isLoading = true;
               state.authError = null;
@@ -256,7 +256,7 @@ export const useUserStore = create<UserState>()(
           reset: () => {
             set(initialState);
           }
-        }))
+        })) as any)
       ),
       { name: 'user-store' }
     ),

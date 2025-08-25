@@ -229,7 +229,7 @@ export function CommandPalette() {
                               <kbd className="px-1.5 py-0.5 bg-muted rounded">
                                 {key}
                               </kbd>
-                              {i < cmd.shortcut.length - 1 && '+'}
+                              {i < cmd.shortcut!.length - 1 && '+'}
                             </React.Fragment>
                           ))}
                         </div>

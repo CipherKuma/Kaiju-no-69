@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { usePWA } from '@/hooks/use-pwa';
 import { X, Download, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
 export function PWAInstallBanner() {
   const { isInstallable, promptInstall } = usePWA();

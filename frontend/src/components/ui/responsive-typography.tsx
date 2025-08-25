@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useResponsive } from '@/hooks';
 
@@ -23,7 +23,7 @@ export function ResponsiveText({
   align = 'left',
   clamp = false,
 }: ResponsiveTextProps) {
-  const { deviceType } = useResponsive();
+  const { deviceType: _deviceType } = useResponsive();
 
   const sizeClasses = {
     xs: 'text-xs sm:text-sm',
@@ -116,7 +116,7 @@ export function ResponsiveHeading({
   className,
   responsive = true,
 }: ResponsiveHeadingProps) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
   const headingClasses = {
     1: responsive ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold' : 'text-5xl font-bold',

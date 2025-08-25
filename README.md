@@ -15,8 +15,8 @@
 ### 🎪 The Magic: Core Components
 - **Trading Algorithms** → **Living Kaiju NFTs** (Free Mint to the Kaiju Owner)
 - **Copy Trading Access** → **Shadow NFTs** (Paid Mint for Regular Users)
-- **Dynamic NFT Art** → Changes form based on the shadows strength (ERC7160 Standard)
-- **30-Day Lifecycle** → Shadows expire, maintaining ecosystem balance. Users need to mint Shadow NFT again.
+- **Time-Based Decay** → Shadows visually age and die over 30 days (ERC7160 Standard)
+- **30-Day Expiry Cycle** → Shadows expire, maintaining ecosystem balance. Users re-mint to continue following.
 
 ---
 
@@ -46,8 +46,8 @@
 ### 👤 Shadow NFTs (Followers)
 - **Paid Mint** with customizable fee set by Kaiju owner
 - **30-Day Lifespan** - expires and needs re-minting
-- **Dynamic Appearance** - changes based on performance (powered by ERC7160)
-- **Tradeable** on OpenSea until expiration
+- **Time-Based Decay** - visual appearance slowly degrades over 30 days (powered by ERC7160)
+- **Tradeable** on OpenSea until expiration (value decreases as expiry approaches)
 - **Automatic Trade Copying** - all Kaiju trades executed for Shadow holders
 
 ---
@@ -57,11 +57,15 @@
 ```mermaid
 graph TB
     A[Trading Algorithm] -->|Posts Signal| B[Kaiju Service]
-    B -->|Finds Shadow Holders| C[Shape Mainnet NFTs]
+    B -->|Finds Shadow Holders| C[Shape Mainnet Shadow NFTs]
     B -->|Executes Trades| D[Shape Sepolia DEX/Perps]
-    D -->|Returns Results| E[Update Performance]
-    E -->|Syncs to Mainnet| F[Dynamic NFT Metadata]
-    F -->|Changes Art| G[ERC7160 Evolution]
+    D -->|Returns Results| E[Update Performance Data]
+    E -->|Syncs to Dashboard| F[Performance Tracking]
+    
+    G[Shadow NFT Mint] -->|30-Day Timer Starts| H[ERC7160 Decay System]
+    H -->|Days Pass| I[Visual Degradation]
+    I -->|Day 30| J[NFT Expires/Dies]
+    J -->|Re-mint Required| G
 ```
 
 ### Cross-Chain Flow
@@ -69,8 +73,14 @@ graph TB
 2. **Algorithm signals profitable trades** to Kaiju Service (API)
 3. **Service finds Shadow holders** from Mainnet NFT contracts
 4. **Trades execute on Sepolia** using our deployed DEX/Perps protocols  
-5. **Performance data syncs** from Sepolia back to Mainnet NFTs
-6. **Shadow appearance evolves** on Mainnet based on trading success
+5. **Performance data syncs** to dashboard for tracking
+
+### Shadow NFT Lifecycle (ERC7160)
+1. **Shadow minted** - Fresh appearance at Day 0
+2. **Time-based decay** - Visual degradation over 30 days (not performance-based)
+3. **Progressive aging** - Shadow slowly "dies" as expiry approaches
+4. **Expiration** - NFT becomes non-functional at Day 30
+5. **Re-mint cycle** - Users must mint new Shadow to continue following
 
 ---
 
@@ -324,9 +334,8 @@ Simply visit our dApp at [kaiju-no-69.vercel.app](https://kaiju-no-69.vercel.app
 
 ## 👥 Team
 
-- **Gabriel Xavier** - Full Stack & Smart Contracts
-- **[Team Member 2]** - Trading Algorithms
-- **[Team Member 3]** - Frontend & Design
+- **Cipher Kuma** - Full Stack Development & Smart Contracts
+- **Cipher Bonney** - Non technical, Pitch, User Story, Art and Designs
 
 ---
 

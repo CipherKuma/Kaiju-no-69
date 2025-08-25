@@ -15,7 +15,7 @@ interface KaijuStore {
 
 export const useKaijuStore = create<KaijuStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       kaijus: [],
       selectedKaiju: null,
       
@@ -36,7 +36,7 @@ export const useKaijuStore = create<KaijuStore>()(
       
       selectKaiju: (kaiju) => set({ selectedKaiju: kaiju }),
       
-      getKaiju: (id) => useKaijuStore.getState().kaijus.find(k => k.id === id)
+      getKaiju: (id) => get().kaijus.find(k => k.id === id)
     }),
     {
       name: 'kaiju-store'

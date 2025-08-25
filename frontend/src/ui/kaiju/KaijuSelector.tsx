@@ -30,7 +30,7 @@ export function KaijuSelector() {
   const filteredKaijus = kaijus.filter(kaiju => 
     kaiju.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     kaiju.territory.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    kaiju.tradingStyle.toLowerCase().includes(searchQuery.toLowerCase())
+    (kaiju.tradingStyle?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false)
   );
 
   return (
@@ -100,8 +100,8 @@ export function KaijuSelector() {
             <div className="text-center space-y-1">
               <h3 className="font-semibold text-white">{kaiju.name}</h3>
               <div className="flex items-center justify-center gap-1">
-                <span className="text-lg">{TRADING_STYLE_ICONS[kaiju.tradingStyle]}</span>
-                <span className="text-xs text-gray-400 capitalize">{kaiju.tradingStyle}</span>
+                <span className="text-lg">{kaiju.tradingStyle ? TRADING_STYLE_ICONS[kaiju.tradingStyle] : '❓'}</span>
+                <span className="text-xs text-gray-400 capitalize">{kaiju.tradingStyle || 'unknown'}</span>
               </div>
             </div>
 

@@ -13,7 +13,7 @@ interface RunwareImageRequest {
 }
 
 export class RunwareAI {
-  private runware: Runware;
+  private runware: InstanceType<typeof Runware>;
 
   constructor(apiKey: string = RUNWARE_API_KEY) {
     this.runware = new Runware({ 
@@ -40,7 +40,7 @@ export class RunwareAI {
         throw new Error('No images generated');
       }
 
-      return images.map(img => img.imageURL);
+      return images.map(img => img.imageURL).filter((url): url is string => url !== undefined);
     } catch (error) {
       console.error('Runware AI Error:', error);
       throw error;

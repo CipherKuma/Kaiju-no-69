@@ -53,16 +53,7 @@ export function KaijuCard({
   const isPositivePerformance = kaiju.performance.last30Days >= 0;
   const performanceColor = isPositivePerformance ? theme.colors.success.DEFAULT : theme.colors.danger.DEFAULT;
 
-  // Determine rarity based on performance
-  const getRarityBadge = () => {
-    const performance = kaiju.performance.last30Days;
-    if (performance > 50) return { label: "Legendary", color: "bg-purple-500" };
-    if (performance > 30) return { label: "Epic", color: "bg-indigo-500" };
-    if (performance > 15) return { label: "Rare", color: "bg-blue-500" };
-    return { label: "Common", color: "bg-gray-500" };
-  };
 
-  const _rarity = getRarityBadge();
 
   return (
     <motion.div

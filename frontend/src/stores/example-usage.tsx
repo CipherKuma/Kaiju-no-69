@@ -140,20 +140,22 @@ export function DataLoader() {
 export function StoreSubscriber() {
   React.useEffect(() => {
     // Subscribe to authentication changes
-    const unsubAuth = useUserStore.subscribe(
-      state => state.isAuthenticated,
-      (isAuthenticated) => {
-        console.log('Auth state changed:', isAuthenticated);
+    let prevIsAuthenticated = useUserStore.getState().isAuthenticated;
+    const unsubAuth = useUserStore.subscribe((state) => {
+      if (state.isAuthenticated !== prevIsAuthenticated) {
+        console.log('Auth state changed:', state.isAuthenticated);
+        prevIsAuthenticated = state.isAuthenticated;
       }
-    );
+    });
     
     // Subscribe to game phase changes
-    const unsubGame = useGameStore.subscribe(
-      state => state.gamePhase,
-      (gamePhase) => {
-        console.log('Game phase changed:', gamePhase);
+    let prevGamePhase = useGameStore.getState().gamePhase;
+    const unsubGame = useGameStore.subscribe((state) => {
+      if (state.gamePhase !== prevGamePhase) {
+        console.log('Game phase changed:', state.gamePhase);
+        prevGamePhase = state.gamePhase;
       }
-    );
+    });
     
     return () => {
       unsubAuth();

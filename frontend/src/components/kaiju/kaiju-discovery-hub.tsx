@@ -50,8 +50,8 @@ export function KaijuDiscoveryHub({ initialKaijus = [] }: KaijuDiscoveryHubProps
   const searchParams = useSearchParams();
   
   // State
-  const [kaijus, setKaijus] = useState<Kaiju[]>(initialKaijus);
-  const [loading, setLoading] = useState(false);
+  const [kaijus, _setKaijus] = useState<Kaiju[]>(initialKaijus);
+  const [_loading, _setLoading] = useState(false);
   const [selectedKaiju, setSelectedKaiju] = useState<Kaiju | null>(null);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [compareList, setCompareList] = useState<string[]>([]);
@@ -314,7 +314,7 @@ export function KaijuDiscoveryHub({ initialKaijus = [] }: KaijuDiscoveryHubProps
                 <div className="px-2">
                   <Slider
                     value={profitabilityRange}
-                    onValueChange={setProfitabilityRange}
+                    onValueChange={(value) => setProfitabilityRange([value[0], value[1]])}
                     min={-50}
                     max={100}
                     step={5}
@@ -333,7 +333,7 @@ export function KaijuDiscoveryHub({ initialKaijus = [] }: KaijuDiscoveryHubProps
                 <div className="px-2">
                   <Slider
                     value={popularityRange}
-                    onValueChange={setPopularityRange}
+                    onValueChange={(value) => setPopularityRange([value[0], value[1]])}
                     min={0}
                     max={1000}
                     step={50}

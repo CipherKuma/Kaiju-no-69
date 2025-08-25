@@ -22,6 +22,9 @@ export interface Kaiju {
   description?: string;
   tradingStyle?: 'aggressive' | 'conservative' | 'balanced' | 'arbitrage';
   popularity?: number;
+  riskLevel?: string;
+  createdAt?: Date;
+  preferredChains?: string[];
   stats?: {
     winRate: number;
     totalTrades: number;
@@ -31,6 +34,7 @@ export interface Kaiju {
 }
 
 export interface Shadow {
+  id: string;
   kaijuId: string;
   nftId: string;
   expiresAt: Date;
@@ -114,6 +118,8 @@ export interface PerformanceData {
   sharpeRatio?: number;
   maxDrawdown?: number;
   dailyReturns?: DailyReturn[];
+  totalValueLocked?: number;
+  avgTradeSize?: number;
 }
 
 export interface DailyReturn {

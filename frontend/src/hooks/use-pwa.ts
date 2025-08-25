@@ -147,8 +147,8 @@ export function useOfflineData<T>(key: string, defaultValue: T) {
     setIsSynced(false);
     
     // Request background sync if available
-    if ('sync' in self.registration) {
-      self.registration.sync.register(`sync-${key}`);
+    if (typeof self !== 'undefined' && 'registration' in self && self.registration && typeof self.registration === 'object' && 'sync' in self.registration) {
+      (self.registration as any).sync.register(`sync-${key}`);
     }
   };
 
@@ -217,7 +217,7 @@ export function usePushNotifications() {
       const registration = await navigator.serviceWorker.ready;
       
       // Subscribe to push notifications
-      const subscription = await registration.pushManager.subscribe({
+      await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
       });

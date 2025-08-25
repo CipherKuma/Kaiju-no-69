@@ -79,25 +79,25 @@ const initialState = {
   modalStack: [],
   globalLoading: false,
   loadingMessage: null,
-  componentLoading: new Map(),
+  componentLoading: new Map<string, boolean>(),
   notifications: [],
   maxNotifications: 5,
   defaultNotificationDuration: 5000,
-  componentStates: new Map(),
-  activeComponents: new Set(),
+  componentStates: new Map<string, ComponentState>(),
+  activeComponents: new Set<string>(),
   sidebarCollapsed: false,
-  panelPositions: new Map(),
+  panelPositions: new Map<string, { x: number; y: number; width: number; height: number }>(),
   activeTab: null,
-  expandedSections: new Set()
+  expandedSections: new Set<string>()
 };
 
 export const useUIStore = create<UIState>()(
   logger(
     devtools(
-      immer((set, get) => ({
+      (immer((set, get) => ({
         ...initialState,
 
-        openModal: (modal) => {
+        openModal: (modal: Modal) => {
           set((state) => {
             const existingIndex = state.modals.findIndex(m => m.id === modal.id);
             if (existingIndex >= 0) {
@@ -349,11 +349,11 @@ export const useUIStore = create<UIState>()(
         reset: () => {
           set(() => ({
             ...initialState,
-            componentLoading: new Map(),
-            componentStates: new Map(),
-            activeComponents: new Set(),
-            panelPositions: new Map(),
-            expandedSections: new Set()
+            componentLoading: new Map<string, boolean>(),
+            componentStates: new Map<string, ComponentState>(),
+            activeComponents: new Set<string>(),
+            panelPositions: new Map<string, { x: number; y: number; width: number; height: number }>(),
+            expandedSections: new Set<string>()
           }));
         },
 
@@ -365,7 +365,7 @@ export const useUIStore = create<UIState>()(
             state.expandedSections.clear();
           });
         }
-      })),
+      })) as any),
       { name: 'ui-store' }
     ),
     'UIStore'

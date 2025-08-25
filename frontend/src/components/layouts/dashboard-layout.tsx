@@ -8,17 +8,14 @@ import {
   Home, 
   Users, 
   Trophy, 
-  ChartBar, 
+ 
   Settings, 
-  HelpCircle,
   ChevronLeft,
   Menu,
   X,
-  Zap,
   Shield,
   Coins,
-  Swords,
-  Target
+  Swords
 } from "lucide-react";
 
 interface DashboardLayoutProps {

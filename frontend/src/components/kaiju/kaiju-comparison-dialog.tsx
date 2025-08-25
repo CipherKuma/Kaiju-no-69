@@ -6,7 +6,7 @@ import { Kaiju } from "@/types/models";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { Badge } from "@/components/ui/badge";
-import { Users, TrendingUp, DollarSign, Percent, Activity, Shield, Target, Clock } from "lucide-react";
+import { Users, TrendingUp, Activity, Shield, Target, Clock } from "lucide-react";
 
 interface KaijuComparisonDialogProps {
   kaijus: Kaiju[];
@@ -20,7 +20,7 @@ export function KaijuComparisonDialog({ kaijus, isOpen, onClose }: KaijuComparis
   // Generate comparison chart data
   const performanceData = kaijus[0]?.performance.dailyReturns?.slice(-30).map((_, index) => {
     const dataPoint: any = { day: index + 1 };
-    kaijus.forEach((kaiju, i) => {
+    kaijus.forEach((kaiju, _i) => {
       dataPoint[kaiju.name] = kaiju.performance.dailyReturns?.[index]?.return || 0;
     });
     return dataPoint;
@@ -45,7 +45,7 @@ export function KaijuComparisonDialog({ kaijus, isOpen, onClose }: KaijuComparis
 
           <TabsContent value="overview" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {kaijus.map((kaiju, index) => (
+              {kaijus.map((kaiju, _index) => (
                 <div key={kaiju.id} className="bg-stone-800 rounded-lg p-6 border border-stone-700">
                   <div className="flex items-center gap-3 mb-4">
                     <img src={kaiju.imageUrl} alt={kaiju.name} className="w-16 h-16 rounded-full" />
@@ -177,7 +177,7 @@ export function KaijuComparisonDialog({ kaijus, isOpen, onClose }: KaijuComparis
                   
                   <div className="space-y-3">
                     <Badge variant="outline" className="w-full justify-center py-2">
-                      {kaiju.tradingStyle?.charAt(0).toUpperCase() + kaiju.tradingStyle?.slice(1)} Trader
+                      {kaiju.tradingStyle ? kaiju.tradingStyle.charAt(0).toUpperCase() + kaiju.tradingStyle.slice(1) : 'Unknown'} Trader
                     </Badge>
                     
                     <div className="space-y-2 text-sm">
@@ -196,7 +196,7 @@ export function KaijuComparisonDialog({ kaijus, isOpen, onClose }: KaijuComparis
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4 text-stone-400" />
                         <span className="text-stone-400">Active Since:</span>
-                        <span className="font-bold">{new Date(kaiju.createdAt).toLocaleDateString()}</span>
+                        <span className="font-bold">{kaiju.createdAt ? new Date(kaiju.createdAt).toLocaleDateString() : 'Unknown'}</span>
                       </div>
                     </div>
 

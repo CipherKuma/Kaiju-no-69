@@ -6,7 +6,6 @@ import { parseEther, formatEther, Address } from 'viem';
 
 // Import ABIs
 import KaijuCollectionFactoryABI from '@/lib/contracts/KaijuCollectionFactory.json';
-import KaijuNFTABI from '@/lib/contracts/KaijuNFT.json';
 import ShadowNFTABI from '@/lib/contracts/ShadowNFT.json';
 import addresses from '@/lib/contracts/addresses.json';
 
@@ -189,7 +188,7 @@ export function useKaijuNFT() {
       abi: KaijuCollectionFactoryABI,
       functionName: 'getCollection',
       args: [collectionId]
-    });
+    }) as any[];
 
     return {
       collectionId,
@@ -276,7 +275,7 @@ export function useKaijuNFT() {
       abi: ShadowNFTABI,
       functionName: 'getShadowData',
       args: [tokenId]
-    });
+    }) as any[];
 
     const progress = await readContract(config, {
       address: shadowContract,

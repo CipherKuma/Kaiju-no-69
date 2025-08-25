@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Play, 
@@ -19,7 +19,6 @@ import { useLiveTradingFeed, useSocketConnection } from "@/hooks/use-realtime";
 import { useTradingFeed } from "@/hooks/use-trading";
 import { TradeExecution } from "@/types/models";
 import { cn } from "@/lib/utils";
-import { fadeInUp, glowAnimation } from "@/lib/animations";
 import Image from "next/image";
 
 interface TradingFeedProps {
@@ -71,7 +70,7 @@ export function TradingFeed({ kaijuIds, className }: TradingFeedProps) {
   // Combine live and historical trades
   const allTrades = [
     ...liveTrades,
-    ...(historicalData?.pages.flatMap(page => page.data) || [])
+    ...((historicalData as any)?.pages?.flatMap((page: any) => page.data) || [])
   ];
   
   // Filter trades
@@ -257,7 +256,7 @@ export function TradingFeed({ kaijuIds, className }: TradingFeedProps) {
                   trade.status === "pending" && "opacity-70",
                   isNew && cn(
                     "animate-pulse",
-                    TRADE_TYPE_GLOW[trade.type]
+                    TRADE_TYPE_GLOW[trade.type as keyof typeof TRADE_TYPE_GLOW]
                   )
                 )}
                 whileHover={{ 

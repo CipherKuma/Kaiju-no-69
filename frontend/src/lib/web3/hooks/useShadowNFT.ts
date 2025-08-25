@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { usePublicClient, useWalletClient, useAccount } from 'wagmi'
-import { Address } from 'viem'
 import { 
   mintShadowNFT, 
   getShadowNFTBalance,
@@ -52,7 +51,7 @@ export function useShadowNFT() {
     
     const unwatch = watchShadowNFTTransfers(
       publicClient,
-      (from, to, tokenId) => {
+      (from, to, _tokenId) => {
         if (from === address || to === address) {
           // Refresh balance when user is involved in transfer
           fetchBalance()

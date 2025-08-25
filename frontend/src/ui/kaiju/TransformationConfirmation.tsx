@@ -154,8 +154,8 @@ export function TransformationConfirmation({ onConfirm, costs, isValid }: Transf
                       <div className="flex justify-between">
                         <span className="text-gray-500">Chain:</span>
                         <span className="text-white flex items-center gap-1">
-                          {policy.chain && CHAIN_INFO[policy.chain].icon}
-                          {policy.chain && CHAIN_INFO[policy.chain].name}
+                          {policy.chains?.[0] && CHAIN_INFO[policy.chains[0]].icon}
+                          {policy.chains?.[0] && CHAIN_INFO[policy.chains[0]].name}
                         </span>
                       </div>
                       <div className="flex justify-between">

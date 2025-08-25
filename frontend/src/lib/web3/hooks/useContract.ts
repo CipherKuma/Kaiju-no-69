@@ -2,9 +2,9 @@
 
 import { useCallback } from 'react'
 import { usePublicClient, useWalletClient, useChainId } from 'wagmi'
-import { Address } from 'viem'
 import { getContractInstance } from '../contracts'
 import { useTransaction } from './useTransaction'
+import { SHADOW_NFT_ABI, POLICY_CONTRACT_ABI } from '../contracts/abis'
 
 export function useContractRead<T = unknown>(
   contractName: 'shadowNft' | 'policy',
@@ -20,7 +20,15 @@ export function useContractRead<T = unknown>(
     }
     
     const contract = getContractInstance(contractName, chainId, publicClient)
-    const result = await contract.read[functionName](...(args || []))
+    const abi = contractName === 'shadowNft' ? SHADOW_NFT_ABI : POLICY_CONTRACT_ABI
+    
+    const result = await publicClient.readContract({
+      address: contract.address,
+      abi,
+      functionName: functionName as any,
+      args: (args || []) as any,
+    })
+    
     return result as T
   }, [publicClient, chainId, contractName, functionName, args])
   
@@ -59,12 +67,21 @@ export function useContractWrite(
     }
     
     return execute(async () => {
-      const contract = getContractInstance(contractName, chainId, walletClient)
+      const contract = getContractInstance(contractName, chainId, publicClient)
+      const abi = contractName === 'shadowNft' ? SHADOW_NFT_ABI : POLICY_CONTRACT_ABI
       
-      const hash = await contract.write[functionName](args, {
+      // Simulate the contract call first
+      const { request } = await publicClient.simulateContract({
+        address: contract.address,
+        abi,
+        functionName: functionName as any,
+        args: args as any,
         account,
         ...overrides,
       })
+      
+      // Execute the transaction
+      const hash = await walletClient.writeContract(request)
       
       return hash
     }, `Executing ${functionName}`)
