@@ -1,4 +1,4 @@
-import { Kaiju } from '@/lib/types';
+import { Kaiju } from '@/types/models';
 
 export const mockKaijus: Kaiju[] = [
   {

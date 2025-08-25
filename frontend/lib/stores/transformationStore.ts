@@ -15,7 +15,7 @@ const initialState: TransformationState = {
   policy: {
     maxTradeAmount: 100,
     totalBudget: 1000,
-    chain: 'ethereum',
+    chains: ['ethereum'],
     dexes: ['uniswap'],
     riskLevel: 3,
     stopLossPercentage: 10,
