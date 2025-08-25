@@ -94,12 +94,12 @@ const initialState = {
 export const useUIStore = create<UIState>()(
   logger(
     devtools(
-      (immer((set, get) => ({
+      immer((set, get) => ({
         ...initialState,
 
         openModal: (modal: Modal) => {
           set((state) => {
-            const existingIndex = state.modals.findIndex(m => m.id === modal.id);
+            const existingIndex = state.modals.findIndex((m) => m.id === modal.id);
             if (existingIndex >= 0) {
               state.modals[existingIndex] = modal;
             } else {
@@ -109,18 +109,18 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        closeModal: (modalId) => {
+        closeModal: (modalId?: string) => {
           set((state) => {
             const idToClose = modalId || state.activeModalId;
             if (!idToClose) return;
 
-            const modal = state.modals.find(m => m.id === idToClose);
+            const modal = state.modals.find((m) => m.id === idToClose);
             if (modal?.onClose) {
               modal.onClose();
             }
 
-            state.modals = state.modals.filter(m => m.id !== idToClose);
-            state.modalStack = state.modalStack.filter(id => id !== idToClose);
+            state.modals = state.modals.filter((m) => m.id !== idToClose);
+            state.modalStack = state.modalStack.filter((id) => id !== idToClose);
             
             if (state.activeModalId === idToClose) {
               state.activeModalId = state.modalStack[state.modalStack.length - 1] || null;
@@ -130,7 +130,7 @@ export const useUIStore = create<UIState>()(
 
         closeAllModals: () => {
           set((state) => {
-            state.modals.forEach(modal => {
+            state.modals.forEach((modal) => {
               if (modal.onClose) {
                 modal.onClose();
               }
@@ -141,7 +141,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        updateModal: (modalId, updates) => {
+        updateModal: (modalId: string, updates: Partial<Modal>) => {
           set((state) => {
             const modal = state.modals.find(m => m.id === modalId);
             if (modal) {
@@ -150,7 +150,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        pushModal: (modal) => {
+        pushModal: (modal: Modal) => {
           set((state) => {
             state.modals.push(modal);
             state.modalStack.push(modal.id);
@@ -175,14 +175,14 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        setGlobalLoading: (loading, message) => {
+        setGlobalLoading: (loading: boolean, message?: string) => {
           set((state) => {
             state.globalLoading = loading;
             state.loadingMessage = message || null;
           });
         },
 
-        setComponentLoading: (componentId, loading) => {
+        setComponentLoading: (componentId: string, loading: boolean) => {
           set((state) => {
             state.componentLoading.set(componentId, loading);
           });
@@ -196,7 +196,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        showNotification: (notification) => {
+        showNotification: (notification: Omit<Notification, 'id' | 'timestamp'>) => {
           const id = Date.now().toString();
           const fullNotification: Notification = {
             ...notification,
@@ -220,7 +220,7 @@ export const useUIStore = create<UIState>()(
           }
         },
 
-        removeNotification: (notificationId) => {
+        removeNotification: (notificationId: string) => {
           set((state) => {
             state.notifications = state.notifications.filter(n => n.id !== notificationId);
           });
@@ -232,23 +232,23 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        showSuccess: (title, message) => {
+        showSuccess: (title: string, message?: string) => {
           get().showNotification({ type: 'success', title, message });
         },
 
-        showError: (title, message) => {
+        showError: (title: string, message?: string) => {
           get().showNotification({ type: 'error', title, message });
         },
 
-        showWarning: (title, message) => {
+        showWarning: (title: string, message?: string) => {
           get().showNotification({ type: 'warning', title, message });
         },
 
-        showInfo: (title, message) => {
+        showInfo: (title: string, message?: string) => {
           get().showNotification({ type: 'info', title, message });
         },
 
-        registerComponent: (componentId, initialState) => {
+        registerComponent: (componentId: string, initialState?: Partial<ComponentState>) => {
           set((state) => {
             state.componentStates.set(componentId, {
               id: componentId,
@@ -259,7 +259,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        unregisterComponent: (componentId) => {
+        unregisterComponent: (componentId: string) => {
           set((state) => {
             state.componentStates.delete(componentId);
             state.activeComponents.delete(componentId);
@@ -267,7 +267,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        updateComponentState: (componentId, updates) => {
+        updateComponentState: (componentId: string, updates: Partial<ComponentState>) => {
           set((state) => {
             const componentState = state.componentStates.get(componentId);
             if (componentState) {
@@ -276,7 +276,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        setComponentActive: (componentId, active) => {
+        setComponentActive: (componentId: string, active: boolean) => {
           set((state) => {
             const componentState = state.componentStates.get(componentId);
             if (componentState) {
@@ -291,7 +291,7 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        setComponentError: (componentId, error) => {
+        setComponentError: (componentId: string, error: string | null) => {
           set((state) => {
             const componentState = state.componentStates.get(componentId);
             if (componentState) {
@@ -306,25 +306,25 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        setSidebarCollapsed: (collapsed) => {
+        setSidebarCollapsed: (collapsed: boolean) => {
           set((state) => {
             state.sidebarCollapsed = collapsed;
           });
         },
 
-        updatePanelPosition: (panelId, position) => {
+        updatePanelPosition: (panelId: string, position: { x: number; y: number; width: number; height: number }) => {
           set((state) => {
             state.panelPositions.set(panelId, position);
           });
         },
 
-        setActiveTab: (tabId) => {
+        setActiveTab: (tabId: string | null) => {
           set((state) => {
             state.activeTab = tabId;
           });
         },
 
-        toggleSection: (sectionId) => {
+        toggleSection: (sectionId: string) => {
           set((state) => {
             if (state.expandedSections.has(sectionId)) {
               state.expandedSections.delete(sectionId);
@@ -334,13 +334,13 @@ export const useUIStore = create<UIState>()(
           });
         },
 
-        expandSection: (sectionId) => {
+        expandSection: (sectionId: string) => {
           set((state) => {
             state.expandedSections.add(sectionId);
           });
         },
 
-        collapseSection: (sectionId) => {
+        collapseSection: (sectionId: string) => {
           set((state) => {
             state.expandedSections.delete(sectionId);
           });
@@ -365,7 +365,7 @@ export const useUIStore = create<UIState>()(
             state.expandedSections.clear();
           });
         }
-      })) as any),
+      })),
       { name: 'ui-store' }
     ),
     'UIStore'

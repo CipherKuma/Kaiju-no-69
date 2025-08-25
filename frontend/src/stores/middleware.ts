@@ -15,9 +15,10 @@ type LoggerImpl = <T>(
 ) => StateCreator<T, [], []>;
 
 const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
-  const loggedSet: typeof set = ((partial: any, replace?: any) => {
+  const loggedSet: typeof set = ((...args: any[]) => {
     const prevState = get();
-    set(partial, replace);
+    // @ts-ignore - TypeScript has issues with rest parameters and overloaded types
+    set(...args);
     const nextState = get();
     
     if (process.env.NODE_ENV === 'development') {

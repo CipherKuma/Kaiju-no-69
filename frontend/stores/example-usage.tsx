@@ -4,11 +4,8 @@ import {
   useGameStore, 
   useTradingStore, 
   useUIStore,
-  selectUser,
   selectTheme,
-  selectActiveKaiju,
-  selectPortfolio,
-  selectNotifications
+  selectActiveKaiju
 } from './index';
 
 // Example 1: Using store directly
@@ -117,7 +114,7 @@ export function ConfirmModal() {
 
 // Example 5: Loading state management
 export function DataLoader() {
-  const { setGlobalLoading, setComponentLoading } = useUIStore();
+  const { setComponentLoading } = useUIStore();
   const isLoading = useUIStore(state => state.componentLoading.get('data-loader'));
   
   const loadData = async () => {
@@ -143,20 +140,14 @@ export function DataLoader() {
 export function StoreSubscriber() {
   React.useEffect(() => {
     // Subscribe to authentication changes
-    const unsubAuth = useUserStore.subscribe(
-      state => state.isAuthenticated,
-      (isAuthenticated) => {
-        console.log('Auth state changed:', isAuthenticated);
-      }
-    );
+    const unsubAuth = useUserStore.subscribe((state) => {
+      console.log('Auth state changed:', state.isAuthenticated);
+    });
     
     // Subscribe to game phase changes
-    const unsubGame = useGameStore.subscribe(
-      state => state.gamePhase,
-      (gamePhase) => {
-        console.log('Game phase changed:', gamePhase);
-      }
-    );
+    const unsubGame = useGameStore.subscribe((state) => {
+      console.log('Game phase changed:', state.gamePhase);
+    });
     
     return () => {
       unsubAuth();

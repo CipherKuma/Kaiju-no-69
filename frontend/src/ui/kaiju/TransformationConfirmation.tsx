@@ -196,11 +196,18 @@ export function TransformationConfirmation({ onConfirm, costs, isValid }: Transf
                     <div className="flex items-center justify-center gap-4">
                       <StatusStep 
                         label="Confirm" 
-                        status={transactionStep === 'confirming' ? 'active' : transactionStep !== 'idle' ? 'complete' : 'pending'} 
+                        status={(() => {
+                          const step = transactionStep as TransactionStep;
+                          switch (step) {
+                            case 'confirming': return 'active';
+                            case 'idle': return 'pending';
+                            default: return 'complete';
+                          }
+                        })()}
                       />
                       <StatusStep 
                         label="Processing" 
-                        status={transactionStep === 'pending' ? 'active' : transactionStep === 'success' ? 'complete' : 'pending'} 
+                        status={transactionStep === 'pending' ? 'active' : (transactionStep === 'success' ? 'complete' : 'pending')} 
                       />
                       <StatusStep 
                         label="Complete" 

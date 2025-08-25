@@ -74,21 +74,21 @@ interface UIState {
 }
 
 const initialState = {
-  modals: [],
-  activeModalId: null,
-  modalStack: [],
+  modals: [] as Modal[],
+  activeModalId: null as string | null,
+  modalStack: [] as string[],
   globalLoading: false,
-  loadingMessage: null,
-  componentLoading: new Map(),
-  notifications: [],
+  loadingMessage: null as string | null,
+  componentLoading: new Map<string, boolean>(),
+  notifications: [] as Notification[],
   maxNotifications: 5,
   defaultNotificationDuration: 5000,
-  componentStates: new Map(),
-  activeComponents: new Set(),
+  componentStates: new Map<string, ComponentState>(),
+  activeComponents: new Set<string>(),
   sidebarCollapsed: false,
-  panelPositions: new Map(),
-  activeTab: null,
-  expandedSections: new Set()
+  panelPositions: new Map<string, { x: number; y: number; width: number; height: number }>(),
+  activeTab: null as string | null,
+  expandedSections: new Set<string>()
 };
 
 export const useUIStore = create<UIState>()(

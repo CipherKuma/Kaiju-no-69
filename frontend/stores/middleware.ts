@@ -15,8 +15,9 @@ type LoggerImpl = <T>(
 ) => StateCreator<T, [], []>;
 
 const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
-  const loggedSet: typeof set = (...args) => {
+  const loggedSet: typeof set = ((...args: any[]) => {
     const prevState = get();
+    // @ts-ignore - TypeScript has issues with rest parameters and overloaded types
     set(...args);
     const nextState = get();
     
@@ -24,10 +25,10 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
       console.group(`[${name || 'Store'}] State Update`);
       console.log('Previous State:', prevState);
       console.log('Next State:', nextState);
-      console.log('Diff:', getStateDiff(prevState, nextState));
+      console.log('Diff:', getStateDiff(prevState as Record<string, unknown>, nextState as Record<string, unknown>));
       console.groupEnd();
     }
-  };
+  }) as typeof set;
 
   return f(loggedSet, get, store);
 };

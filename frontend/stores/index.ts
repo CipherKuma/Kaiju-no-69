@@ -30,15 +30,16 @@ export const resetAllStores = () => {
 
 // Example of cross-store subscription
 export const subscribeToAuthChanges = () => {
-  return useUserStore.subscribe(
-    (state) => state.isAuthenticated,
-    (isAuthenticated) => {
-      if (!isAuthenticated) {
-        // Clear sensitive data from other stores when user logs out
-        useGameStore.getState().reset();
-        useTradingStore.getState().reset();
-        useUIStore.getState().clearNotifications();
-      }
+  let prevIsAuthenticated = useUserStore.getState().isAuthenticated;
+  
+  return useUserStore.subscribe((state) => {
+    const isAuthenticated = state.isAuthenticated;
+    if (prevIsAuthenticated && !isAuthenticated) {
+      // Clear sensitive data from other stores when user logs out
+      useGameStore.getState().reset();
+      useTradingStore.getState().reset();
+      useUIStore.getState().clearNotifications();
     }
-  );
+    prevIsAuthenticated = isAuthenticated;
+  });
 };
