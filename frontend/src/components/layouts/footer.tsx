@@ -203,7 +203,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <p className="text-gray-500 text-sm text-center md:text-left">
-              © 2024 Kaiju No. 69. All rights reserved. Built on Solana.
+              © 2025 Kaiju No. 69. All rights reserved. Built on Solana.
             </p>
             
             <div className="flex items-center space-x-6 text-sm">

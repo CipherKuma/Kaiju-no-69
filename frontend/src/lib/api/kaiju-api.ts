@@ -402,7 +402,15 @@ export const kaijuApi = {
     const response = await apiRequest.post<{
       status: string;
       data: BackendKaiju;
-    }>('/kaijus', data);
+    }>('/kaijus', {
+      // Map frontend fields to backend fields
+      nftCollectionAddress: data.nftCollectionAddress,
+      name: data.name,
+      bio: data.bio,
+      algorithmUrl: data.algorithmUrl,
+      kaijuImageUrl: data.kaijuImageUrl,
+      shadowImageUrl: data.shadowImageUrl
+    });
     
     return transformKaiju(response.data);
   },

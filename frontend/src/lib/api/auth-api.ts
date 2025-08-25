@@ -18,13 +18,25 @@ export const authApi = {
   connectWallet: async (walletAddress: string): Promise<AuthResponse> => {
     const response = await apiRequest.post<{
       status: string;
-      data: AuthResponse;
-    }>('/auth/connect', { walletAddress });
+      data: {
+        user: any;
+        token: string;
+      };
+    }>('/auth/connect-wallet', { walletAddress });
     
     // Save token
     tokenManager.setTokens(response.data.token);
     
-    return response.data;
+    // Transform response to match expected format
+    return {
+      token: response.data.token,
+      user: {
+        id: response.data.user.id,
+        walletAddress: response.data.user.wallet_address,
+        serverWalletAddress: response.data.user.server_wallet_address || '',
+        createdAt: response.data.user.created_at
+      }
+    };
   },
   
   // Get current user profile
